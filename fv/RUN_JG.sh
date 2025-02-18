@@ -193,8 +193,10 @@ DATE=$(date +%y-%m-%d-%H_%M_%S)
 PROJ="${JOB}/${filename}_jgsession_$DATE"
 if [ "$gui" -eq "0" ]; then
     echo "[RUN_JG] no gui"
-    echo "[RUN_JG] jg -no_gui -fpv $TCLF -proj $PROJ"
-    jg -no_gui -fpv $TCLF -proj $PROJ
+    #echo "[RUN_JG] jg -no_gui -fpv $TCLF -proj $PROJ"
+    #jg -no_gui -fpv $TCLF -proj $PROJ
+    echo "[RUN_JG] jg -allow_unsupported_OS -no_gui -fpv $TCLF -proj $PROJ"
+    jg -allow_unsupported_OS -no_gui -fpv $TCLF -proj $PROJ
     RUNDIR="${JOB}/${filename}_rundir"
 
     if [ ! -d $RUNDIR ]; then
