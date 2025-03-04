@@ -1,11 +1,13 @@
 #!/bin/bash
 # file path being either absolute path or relative path from this directory
-TOPFILE=./src/topsim.sv
+TOPFILE=../rocket/verilog/Rocket.sv
 FVMACRO=./src/macro.sv
 
-HDLDIR=$(realpath ../core)
 #HDLDIR=/home/yaohsiao/rtl2uspecV2/cva6_rtl2uspec/core
-DESIGNDIR=$(realpath ..)
+
+
+HDLDIR=$(realpath ../rocket/verilog/)
+DESIGNDIR=$(realpath ../)
 #DESIGNDIR=/home/yaohsiao/rtl2uspecV2/cva6_rtl2uspec
 #echo "====================== [RUN_JG]  ================================ "
 #echo "HDLDIR: $HDLDIR"

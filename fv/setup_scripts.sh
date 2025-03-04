@@ -1,11 +1,11 @@
 #!/bin/bash
 # file path being either absolute path or relative path from this directory
-TOPFILE=./src/topsim.sv
+TOPFILE=../rocket/verilog/Rocket.sv
 FVMACRO=./src/macro.sv
 DIR=src
 
-HDLDIR=$(realpath ../cva6/core)
-DESIGNDIR=$(realpath ../cva6)
+HDLDIR=$(realpath ../rocket/verilog/)
+DESIGNDIR=$(realpath ./)
 echo "====================== [SETUP_FILES]  ================================ "
 echo "HDLDIR: $HDLDIR"
 echo "DESIGNDIR: $DESIGNDIR"
