@@ -1,0 +1,88 @@
+# (name, iir, tracking_logics_sig1|commit_cond, tracking_logic_sig2|commit_cond, ...) separated by empty lines
+# tracking_logic_sig is hierarchical signal name without any operators 
+# while commit_cond is an expression and treated as either 1'b0 or 1'b1
+# we enumerate cross-prodct of tracking_logics_sig and commit_cond to derive all
+# possible performing locations for a tuple of (iir, tracking_logics) 
+
+
+decode
+core._ibuf_io_pc
+core._ibuf_io_inst_0_valid 
+
+execute
+core.ex_reg_pc 
+core.ex_reg_valid
+core.ex_reg_replay #not sure, might be encoded by ctrl & valid
+core.ex_reg_flush_pipe #not sure
+core.ex_ctrl_fp
+core.ex_ctrl_rocc
+core.ex_ctrl_branch
+core.ex_ctrl_jal
+core.ex_ctrl_jalr
+core.ex_ctrl_rxs2
+core.ex_ctrl_rxs1
+core.ex_ctrl_sel_alu2
+core.ex_ctrl_sel_alu1
+core.ex_ctrl_sel_imm
+core.ex_ctrl_alu_dw
+core.ex_ctrl_alu_fn
+core.ex_ctrl_mem
+core.ex_ctrl_mem_cmd
+core.ex_ctrl_rfs1
+core.ex_ctrl_rfs2
+core.ex_ctrl_wfd
+core.ex_ctrl_mul
+core.ex_ctrl_div
+core.ex_ctrl_wxd
+core.ex_ctrl_csr
+core.ex_ctrl_fence_i
+
+MulDiv
+core.div.req_tag #not PC, might need to modify DiVMUL for adding PC
+core.div.state[0]
+core.div.state[1]
+core.div.state[2]
+
+FPU #Not instantiated
+
+memory
+core.mem_reg_pc 
+core.mem_reg_valid
+core.mem_reg_replay #not sure
+core.mem_reg_flush_pipe #not sure
+core.mem_ctrl_fp
+core.mem_ctrl_rocc
+core.mem_ctrl_branch
+core.mem_ctrl_jal
+core.mem_ctrl_jalr
+core.mem_ctrl_rxs2
+core.mem_ctrl_rxs1
+core.mem_ctrl_mem
+core.mem_ctrl_rfs1
+core.mem_ctrl_rfs2
+core.mem_ctrl_wfd
+core.mem_ctrl_mul
+core.mem_ctrl_div
+core.mem_ctrl_wxd
+core.mem_ctrl_csr
+core.mem_ctrl_fence_i
+core.mem_ctrl_vec
+
+writeback
+core.wb_reg_pc 
+core.wb_reg_valid
+core.wb_reg_replay #not sure
+core.wb_reg_flush_pipe #not sure
+core.wb_ctrl_rocc
+core.wb_ctrl_rxs2
+core.wb_ctrl_rxs1
+core.wb_ctrl_mem
+core.wb_ctrl_rfs1
+core.wb_ctrl_rfs2
+core.wb_ctrl_wfd
+core.wb_ctrl_div
+core.wb_ctrl_wxd
+core.wb_ctrl_csr
+core.wb_ctrl_fence_i
+core.wb_ctrl_vec
+core.wb_valid #commit
