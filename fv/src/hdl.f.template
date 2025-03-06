@@ -2,6 +2,17 @@
 +define+WT_DCACHE
 +define+FVT
 +define+CVA6_REPO_DIR=DESIGNDIR
-+incdir+DESIGNDIR/
++incdir+DESIGNDIR/verilog
 
--y DESIGNDIR/
+// top level modules
+DESIGNDIR/verilog/PlusArgTimeout.sv
+DESIGNDIR/verilog/IBuf.sv
+DESIGNDIR/verilog/rf_31x64.sv
+DESIGNDIR/verilog/CSRFile.sv
+DESIGNDIR/verilog/BreakpointUnit.sv
+DESIGNDIR/verilog/RocketALU.sv
+DESIGNDIR/verilog/MulDiv.sv
+DESIGNDIR/verilog/Arbiter3_LLWB.sv
+
+// non-top level modules
+DESIGNDIR/verilog/RVCExpander.sv

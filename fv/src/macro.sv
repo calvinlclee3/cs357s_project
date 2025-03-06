@@ -1,18 +1,18 @@
 property CONST (N);
-    @(posedge clk_i) N == $past(N);
+    @(posedge clock) N == $past(N);
 endproperty
 `define STORE 7'b0100011
 `define LOAD 7'b0000011
 
 reg first;
 `ifdef SYMSTART
-wire rst_ni_psuedo;
+wire reset_psuedo;
 `endif
-always @(posedge clk_i) begin
+always @(posedge clock) begin
 `ifdef SYMSTART
-    if (!rst_ni_psuedo) begin
+    if (reset_psuedo) begin
 `else
-    if (!rst_ni) begin
+    if (reset) begin
 `endif
         first <= 1;
     end else if (first == 1) begin

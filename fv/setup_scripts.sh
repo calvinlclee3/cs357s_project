@@ -5,7 +5,7 @@ FVMACRO=./src/macro.sv
 DIR=src
 
 HDLDIR=$(realpath ../rocket/verilog/)
-DESIGNDIR=$(realpath ./)
+DESIGNDIR=$(realpath ../rocket/)
 echo "====================== [SETUP_FILES]  ================================ "
 echo "HDLDIR: $HDLDIR"
 echo "DESIGNDIR: $DESIGNDIR"

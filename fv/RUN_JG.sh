@@ -106,7 +106,7 @@ if [ -f "$SVA" ] && [ -f "$TOPFILE" ]; then
     if [ "$SYM" -eq "1" ]; then
         { echo "+define+FVT"; echo "+define+SYMSTART";  head -n 21 "$FFILE"; echo "${TOPV}" ; tail -n +22 "$FFILE"; } > $HDLF
     else 
-        { head -n 21 "$FFILE"; echo "${TOPV}" ; tail -n +22 "$FFILE"; } > $HDLF
+        { head -n 5 "$FFILE"; echo "${TOPV}" ; tail -n +6 "$FFILE"; } > $HDLF
     fi 
     echo "[RUN_JG] SVA is $SVA"
     echo "[RUN_JG] HDLF is $HDLF"
