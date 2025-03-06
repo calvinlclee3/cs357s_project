@@ -211,14 +211,14 @@ if [ "$gui" -eq "0" ]; then
     mv $SETUPFILE $RUNDIR
 else
     echo "[RUN_JG] gui"
-    echo "[RUN_JG] jg -fpv $TCLF -proj $PROJ"
+    echo "[RUN_JG] jg -allow_unsupported_OS -fpv $TCLF -proj $PROJ"
     sed -i "s~exit~#exit~" $TCLF
     if [ -z "$DISPLAY" ]; then
         echo "no x server"
         exit 1
     else 
         #jg -fpv $TCLF  -proj $PROJ & 
-        jg -fpv $TCLF  -proj $PROJ & 
+        jg -allow_unsupported_OS -fpv $TCLF  -proj $PROJ & 
     fi 
 fi 
 
