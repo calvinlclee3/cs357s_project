@@ -16,10 +16,7 @@ ex_pc_valid
 ex_reg_replay 
 ex_reg_flush_pipe 
 ex_ctrl_fp
-ex_ctrl_rocc
 ex_ctrl_branch
-ex_ctrl_jal
-ex_ctrl_jalr
 ex_ctrl_rxs2
 ex_ctrl_rxs1
 ex_ctrl_sel_alu2
@@ -29,14 +26,7 @@ ex_ctrl_alu_dw
 ex_ctrl_alu_fn
 ex_ctrl_mem
 ex_ctrl_mem_cmd
-ex_ctrl_rfs1
-ex_ctrl_rfs2
-ex_ctrl_wfd
-ex_ctrl_mul
-ex_ctrl_div
 ex_ctrl_wxd
-ex_ctrl_csr
-ex_ctrl_fence_i
 
 memory
 mem_reg_pc 
@@ -45,21 +35,11 @@ mem_pc_valid
 mem_reg_replay
 mem_reg_flush_pipe
 mem_ctrl_fp
-mem_ctrl_rocc
 mem_ctrl_branch
-mem_ctrl_jal
-mem_ctrl_jalr
 mem_ctrl_rxs2
 mem_ctrl_rxs1
 mem_ctrl_mem
-mem_ctrl_rfs1
-mem_ctrl_rfs2
-mem_ctrl_wfd
-mem_ctrl_mul
-mem_ctrl_div
 mem_ctrl_wxd
-mem_ctrl_csr
-mem_ctrl_fence_i
 mem_ctrl_vec
 
 writeback
@@ -67,16 +47,9 @@ wb_reg_pc
 wb_reg_valid
 wb_reg_replay
 wb_reg_flush_pipe
-wb_ctrl_rocc
 wb_ctrl_rxs2
 wb_ctrl_rxs1
 wb_ctrl_mem
-wb_ctrl_rfs1
-wb_ctrl_rfs2
-wb_ctrl_wfd
-wb_ctrl_div
 wb_ctrl_wxd
-wb_ctrl_csr
-wb_ctrl_fence_i
 wb_ctrl_vec
-(wb_valid)
+wb_valid

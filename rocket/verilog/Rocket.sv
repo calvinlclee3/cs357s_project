@@ -1690,4 +1690,3 @@ module Rocket(	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scal
   assign io_fpu_killx = ctrl_killx;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :610:{35,48}]
   assign io_fpu_killm = killm_common;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :708:{38,52,68}]
 endmodule
-
