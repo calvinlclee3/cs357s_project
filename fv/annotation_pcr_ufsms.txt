@@ -79,4 +79,4 @@ wb_ctrl_wxd
 wb_ctrl_csr
 wb_ctrl_fence_i
 wb_ctrl_vec
-(wb_valid == 1'b1)
+(wb_valid)
