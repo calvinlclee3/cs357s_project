@@ -12,34 +12,24 @@ _ibuf_io_inst_0_valid
 execute
 ex_reg_pc 
 ex_pc_valid
+ex_reg_flush_pipe
+ex_ctrl_mul
 ex_ctrl_div 
-ex_ctrl_csr
 ex_ctrl_branch
 ex_ctrl_mem
-ex_ctrl_wxd
 
 memory
 mem_reg_pc 
-mem_reg_valid
 mem_pc_valid
-mem_reg_replay
 mem_reg_flush_pipe
-mem_ctrl_fp
 mem_ctrl_branch
-mem_ctrl_rxs2
-mem_ctrl_rxs1
 mem_ctrl_mem
-mem_ctrl_wxd
-mem_ctrl_vec
 
 writeback
 wb_reg_pc 
 wb_reg_valid
 wb_reg_replay
+wb_xcpt
 wb_reg_flush_pipe
-wb_ctrl_rxs2
-wb_ctrl_rxs1
-wb_ctrl_mem
 wb_ctrl_wxd
-wb_ctrl_vec
 (wb_valid == 1'b1)
