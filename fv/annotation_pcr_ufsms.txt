@@ -11,21 +11,11 @@ _ibuf_io_inst_0_valid
 
 execute
 ex_reg_pc 
-ex_reg_valid
 ex_pc_valid
-ex_reg_replay 
-ex_reg_flush_pipe 
-ex_ctrl_fp
+ex_ctrl_div 
+ex_ctrl_csr
 ex_ctrl_branch
-ex_ctrl_rxs2
-ex_ctrl_rxs1
-ex_ctrl_sel_alu2
-ex_ctrl_sel_alu1
-ex_ctrl_sel_imm
-ex_ctrl_alu_dw
-ex_ctrl_alu_fn
 ex_ctrl_mem
-ex_ctrl_mem_cmd
 ex_ctrl_wxd
 
 memory
@@ -52,4 +42,4 @@ wb_ctrl_rxs1
 wb_ctrl_mem
 wb_ctrl_wxd
 wb_ctrl_vec
-wb_valid
+(wb_valid == 1'b1)
