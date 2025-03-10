@@ -61,7 +61,7 @@ echo "HEADERFILE: $HEADERFILE"
 
 
 # Shared by all instructions 
-if [ ! -f "xGenPerfLocDfgDiv/dfg_e.0" ]; then
+if [ ! -f "xGenPerfLocDfgDiv/dfg_e.txt" ]; then
     exit
 fi 
 echo "========== DFG E prepared ========== "
