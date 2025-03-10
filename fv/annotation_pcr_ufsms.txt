@@ -7,26 +7,26 @@
 
 decode
 _ibuf_io_pc
-_ibuf_io_inst_0_valid 
+_ibuf_io_inst_0_valid
 
 execute
-ex_reg_pc 
+ex_reg_pc
 ex_pc_valid
 ex_reg_flush_pipe
 ex_ctrl_mul
-ex_ctrl_div 
+ex_ctrl_div
 ex_ctrl_branch
 ex_ctrl_mem
 
 memory
-mem_reg_pc 
+mem_reg_pc
 mem_pc_valid
 mem_reg_flush_pipe
 mem_ctrl_branch
 mem_ctrl_mem
 
 writeback
-wb_reg_pc 
+wb_reg_pc
 wb_reg_valid
 wb_reg_replay
 wb_xcpt
