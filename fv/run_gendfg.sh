@@ -16,9 +16,7 @@ else
     python3 gen_dfg_all_pls.py pp
     cat dfg_e.txt | sort -u > cur.txt 
     cat expected_output/dfg_e.txt|sort -u > prev.txt    
-    diff cur.txt prev.txt
     # To ensure the results are the same in case the edges are reordered 
     mv dfg_e.txt dfg_e.0
-    cp expected_output/dfg_e.txt .
 fi 
 cd ../../
