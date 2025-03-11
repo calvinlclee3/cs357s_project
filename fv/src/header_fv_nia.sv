@@ -53,13 +53,13 @@ pc0_i0_assoc_1: assume property (@(posedge clock)
     _ibuf_io_pc == pc0 |-> _ibuf_io_inst_0_bits_inst_bits == i0);
 pc0_i0_assoc_2: assume property (@(posedge clock) 
     _ibuf_io_pc == pc0 |-> 
-    (ibuf_io_inst_0_valid == 1'b1 && 
+    (_ibuf_io_inst_0_valid == 1'b1 && 
      _ibuf_io_inst_0_bits_xcpt0_pf_inst == 1'b0 &&
      _ibuf_io_inst_0_bits_xcpt0_gf_inst == 1'b0 &&
      _ibuf_io_inst_0_bits_xcpt0_ae_inst == 1'b0 &&
      _ibuf_io_inst_0_bits_xcpt1_pf_inst == 1'b0 &&
      _ibuf_io_inst_0_bits_xcpt1_gf_inst == 1'b0 &&
-     _ibuf_io_inst_0_bits_xcpt1_ae_inst == 1'b0 &&
+     _ibuf_io_inst_0_bits_xcpt1_ae_inst == 1'b0
     )
     // IF issuing a valid request, i.e. no exception raised so far at IF
 );
@@ -71,4 +71,4 @@ NO_INSTN_INTERFERENCE_2: assume property (@(posedge clock) first |=>
     always !(_ibuf_io_inst_0_valid));
 
 ISSUE_ONCE: assume property (@(posedge clock) instn_begin |=> 
-        always !(ibuf_io_pc == pc0));
+        always !(_ibuf_io_pc == pc0));
