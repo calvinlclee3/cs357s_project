@@ -16,3 +16,4 @@ touch xSanity/xSanity.sv
 # 02
 rm -rf xDUVPLs/reachable_duvpls.sv
 ./run_duvpls.sh
+BYPASS=0 ./run_gendfg.sh

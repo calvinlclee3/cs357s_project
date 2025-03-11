@@ -11,6 +11,9 @@ else
     cd ../../
     ./RUN_JG.sh -j synthlc/xGenPerfLocDfgDiv -s synthlc/xGenPerfLocDfgDiv/tmp.sv -t synthlc/xGenPerfLocDfgDiv/get_dfg.tcl -g 0 
     cd synthlc/xGenPerfLocDfgDiv
+    cd tmp_rundir
+    rm -rf tmp_jgsession*
+    cd ..
     mylog=$(ls tmp_rundir/*/jg.log)
     cp ${mylog} "get_dfg.tcl.log"
     python3 gen_dfg_all_pls.py pp
