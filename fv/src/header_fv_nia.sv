@@ -41,7 +41,7 @@ i0_const: assume property (@(posedge clock) CONST(i0));
 // Set up pc value, instruction issue, and execution contexts
 // =============================================================================
 // (pc0, i0)
-wire [64-1:0] pc0;
+wire [39:0] pc0;
 
 pc0_const: assume property (@(posedge clock) CONST(pc0));
 pc0_nozero: assume property (@(posedge clock) pc0 != '0);
