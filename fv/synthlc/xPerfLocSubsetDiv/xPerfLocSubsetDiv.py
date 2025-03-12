@@ -144,10 +144,10 @@ def gen():
                 s_ += "{s1}_hpn & ".format(s1=loc)
                 ors_ += "{s1} | ".format(s1=loc)
             else:
-                ns_ += "assume property (@(posedge clk_i) !{s1}); \n".format(s1=loc)
+                ns_ += "assume property (@(posedge clock) !{s1}); \n".format(s1=loc)
         s_ += "1'b1"
         ors_ += "1'b0"
-        t_ = "C_%d_N: cover property (@(posedge clk_i) %s & !(%s));" % (cnt, s_, ors_)
+        t_ = "C_%d_N: cover property (@(posedge clock) %s & !(%s));" % (cnt, s_, ors_)
         with open("covertest/coverset_%d.sv" % cnt, "w") as f:
             f.write(h_)
             f.write("\n")
