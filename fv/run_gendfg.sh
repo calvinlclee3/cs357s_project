@@ -6,8 +6,8 @@ python3 gen_dfg_all_pls.py gen
 touch tmp.sv 
 if [ $BYPASS -eq 1 ];
 then
-    cp expected_output/dfg_e.0 .
-    cp dfg_e.0 dfg_e.txt
+    cp expected_output/dfg_e.txt .
+    cp dfg_e.txt dfg_e.0
 else
     cd ../../
     ./RUN_JG.sh -j synthlc/xGenPerfLocDfgDiv -s synthlc/xGenPerfLocDfgDiv/tmp.sv -t synthlc/xGenPerfLocDfgDiv/get_dfg.tcl -g 0 
