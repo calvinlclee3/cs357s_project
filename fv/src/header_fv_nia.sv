@@ -72,3 +72,6 @@ NO_INSTN_INTERFERENCE_2: assume property (@(posedge clock) first |=>
 
 ISSUE_ONCE: assume property (@(posedge clock) instn_begin |=> 
         always !(_ibuf_io_pc == pc0));
+
+NON_REPLAY: assume property (@(posedge clock) instn_begin |-> 
+        !(_ibuf_io_inst_0_bits_replay));
