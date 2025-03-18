@@ -1058,534 +1058,404 @@ module Rocket(	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scal
        &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], _ibuf_io_inst_0_bits_inst_bits[4], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]}}};	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:317:20, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
 
   always @(posedge clock) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-      if(reset) begin
-  id_reg_pause <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:166:25]
-  imem_might_request_reg <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:167:35]
-  ex_ctrl_fp <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_rocc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_branch <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_jal <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_jalr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_rxs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_rxs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_sel_alu2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_sel_alu1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_sel_imm <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_alu_dw <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_alu_fn <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_mem <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_mem_cmd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_rfs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_rfs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_wfd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_mul <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_div <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_wxd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_csr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  ex_ctrl_fence_i <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
-  mem_ctrl_fp <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_rocc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_branch <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_jal <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_jalr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_rxs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_rxs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_mem <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_rfs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_rfs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_wfd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_mul <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_div <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_wxd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_csr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_fence_i <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  mem_ctrl_vec <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
-  wb_ctrl_rocc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_rxs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_rxs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_mem <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_rfs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_rfs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_wfd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_div <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_wxd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_csr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_fence_i <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  wb_ctrl_vec <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
-  ex_reg_xcpt_interrupt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:252:35]
-  ex_reg_valid <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:253:35]
-  ex_reg_rvc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:254:35]
-  ex_reg_btb_resp_entry <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35]
-  ex_reg_btb_resp_bht_history <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35]
-  ex_reg_xcpt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:256:35]
-  ex_reg_flush_pipe <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:257:35]
-  ex_reg_load_use <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:258:35]
-  ex_reg_cause <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:259:35]
-  ex_reg_replay <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:260:26]
-  ex_reg_pc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22]
-  ex_reg_mem_size <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28]
-  ex_reg_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:264:24]
-  ex_reg_raw_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:265:28]
-  mem_reg_xcpt_interrupt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:269:36]
-  mem_reg_valid <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:270:36]
-  mem_reg_rvc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:271:36]
-  mem_reg_btb_resp_entry <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:272:36]
-  mem_reg_btb_resp_bht_history <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:272:36]
-  mem_reg_xcpt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:273:36]
-  mem_reg_replay <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:274:36]
-  mem_reg_flush_pipe <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:275:36]
-  mem_reg_cause <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:276:36]
-  mem_mem_cmd_bh <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:277:36]
-  mem_reg_load <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:278:36]
-  mem_reg_store <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:279:36]
-  mem_reg_sfence <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:281:27]
-  mem_reg_pc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:282:23]
-  mem_reg_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:283:25]
-  mem_reg_mem_size <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:284:29]
-  mem_reg_hls_or_dv <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:285:30]
-  mem_reg_raw_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:286:29]
-  mem_reg_wdata <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:287:26]
-  mem_reg_rs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:288:24]
-  mem_br_taken <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:289:25]
-  wb_reg_valid <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:293:35]
-  wb_reg_xcpt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:294:35]
-  wb_reg_replay <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:295:35]
-  wb_reg_flush_pipe <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:296:35]
-  wb_reg_cause <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:297:35]
-  wb_reg_sfence <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:299:26]
-  wb_reg_pc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:300:22]
-  wb_reg_mem_size <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:301:28]
-  wb_reg_hls_or_dv <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:302:29]
-  wb_reg_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:305:24]
-  wb_reg_raw_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:306:28]
-  wb_reg_wdata <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:307:25]
-  coreMonitorBundle_rd0val_REG <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1230:46]
-  coreMonitorBundle_rd0val_REG_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1230:38]
-  coreMonitorBundle_rd1val_REG <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1232:46]
-  coreMonitorBundle_rd1val_REG_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1232:38]
-  io_imem_progress_REG <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1089:30]
-  dcache_blocked_blocked <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1054:22]
-  rocc_blocked <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1058:25]
-  _id_stall_fpu_r <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1336:29]
-  _r <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1336:29]
-  div_io_kill_REG <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:709:41]
-  ex_reg_rs_bypass_0 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:473:29]
-  ex_reg_rs_bypass_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:473:29]
-  ex_reg_rs_lsb_0 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:474:26]
-  ex_reg_rs_lsb_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:474:26]
-  ex_reg_rs_msb_0 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26]
-  ex_reg_rs_msb_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26]
-  id_reg_fence <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:339:29]
-
-
-
+    if(reset) begin
+      id_reg_pause <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:166:25]
+      imem_might_request_reg <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:167:35]
+      ex_ctrl_fp <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_rocc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_branch <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_jal <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_jalr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_rxs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_rxs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_sel_alu2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_sel_alu1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_sel_imm <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_alu_dw <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_alu_fn <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_mem <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_mem_cmd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_rfs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_rfs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_wfd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_mul <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_div <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_wxd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_csr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      ex_ctrl_fence_i <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20]
+      mem_ctrl_fp <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_rocc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_branch <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_jal <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_jalr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_rxs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_rxs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_mem <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_rfs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_rfs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_wfd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_mul <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_div <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_wxd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_csr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_fence_i <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      mem_ctrl_vec <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21]
+      wb_ctrl_rocc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_rxs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_rxs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_mem <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_rfs1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_rfs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_wfd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_div <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_wxd <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_csr <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_fence_i <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      wb_ctrl_vec <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:250:20]
+      ex_reg_xcpt_interrupt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:252:35]
+      ex_reg_valid <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:253:35]
+      ex_reg_rvc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:254:35]
+      ex_reg_btb_resp_entry <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35]
+      ex_reg_btb_resp_bht_history <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35]
+      ex_reg_xcpt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:256:35]
+      ex_reg_flush_pipe <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:257:35]
+      ex_reg_load_use <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:258:35]
+      ex_reg_cause <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:259:35]
+      ex_reg_replay <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:260:26]
+      ex_reg_pc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22]
+      ex_reg_mem_size <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28]
+      ex_reg_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:264:24]
+      ex_reg_raw_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:265:28]
+      mem_reg_xcpt_interrupt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:269:36]
+      mem_reg_valid <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:270:36]
+      mem_reg_rvc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:271:36]
+      mem_reg_btb_resp_entry <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:272:36]
+      mem_reg_btb_resp_bht_history <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:272:36]
+      mem_reg_xcpt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:273:36]
+      mem_reg_replay <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:274:36]
+      mem_reg_flush_pipe <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:275:36]
+      mem_reg_cause <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:276:36]
+      mem_mem_cmd_bh <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:277:36]
+      mem_reg_load <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:278:36]
+      mem_reg_store <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:279:36]
+      mem_reg_sfence <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:281:27]
+      mem_reg_pc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:282:23]
+      mem_reg_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:283:25]
+      mem_reg_mem_size <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:284:29]
+      mem_reg_hls_or_dv <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:285:30]
+      mem_reg_raw_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:286:29]
+      mem_reg_wdata <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:287:26]
+      mem_reg_rs2 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:288:24]
+      mem_br_taken <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:289:25]
+      wb_reg_valid <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:293:35]
+      wb_reg_xcpt <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:294:35]
+      wb_reg_replay <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:295:35]
+      wb_reg_flush_pipe <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:296:35]
+      wb_reg_cause <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:297:35]
+      wb_reg_sfence <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:299:26]
+      wb_reg_pc <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:300:22]
+      wb_reg_mem_size <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:301:28]
+      wb_reg_hls_or_dv <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:302:29]
+      wb_reg_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:305:24]
+      wb_reg_raw_inst <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:306:28]
+      wb_reg_wdata <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:307:25]
+      coreMonitorBundle_rd0val_REG <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1230:46]
+      coreMonitorBundle_rd0val_REG_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1230:38]
+      coreMonitorBundle_rd1val_REG <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1232:46]
+      coreMonitorBundle_rd1val_REG_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1232:38]
+      io_imem_progress_REG <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1089:30]
+      dcache_blocked_blocked <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1054:22]
+      rocc_blocked <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1058:25]
+      _id_stall_fpu_r <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1336:29]
+      _r <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1336:29]
+      div_io_kill_REG <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:709:41]
+      ex_reg_rs_bypass_0 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:473:29]
+      ex_reg_rs_bypass_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:473:29]
+      ex_reg_rs_lsb_0 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:474:26]
+      ex_reg_rs_lsb_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:474:26]
+      ex_reg_rs_msb_0 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26]
+      ex_reg_rs_msb_1 <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26]
+      id_reg_fence <= '0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:339:29]
     end
     else begin
-    id_reg_pause <= ~(_csr_io_time[4:0] == 5'h0 | _csr_io_inhibit_cycle | io_dmem_perf_release | ibuf_io_kill) & (~ctrl_killd & (&_id_ctrl_decoder_decoded_andMatrixOutputs_T_5) & _ibuf_io_inst_0_bits_inst_bits[23:20] == 4'h0 | id_reg_pause);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:166:25, :313:35, :317:20, :347:19, :409:33, :533:19, :538:22, :542:{25,42,51,66}, :1076:{40,71,89,104}, :1194:{28,62,70,94,118}, :1195:{18,33}, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
-    imem_might_request_reg <= ex_pc_valid | mem_pc_valid | _csr_io_customCSRs_0_value[1];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:167:35, :347:19, :603:{34,51}, :622:{36,54}, :1086:{43,59}, generators/rocket-chip/src/main/scala/tile/CustomCSRs.scala:44:61]
-    if (~ctrl_killd) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1076:{40,71,89,104}]
-      ex_ctrl_fp <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_67;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
-      ex_ctrl_branch <= |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_22, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_63};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}, :114:{19,36}]
-      ex_ctrl_jal <= &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
-      ex_ctrl_jalr <= &_id_ctrl_decoder_decoded_andMatrixOutputs_T_25;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
-      ex_ctrl_rxs2 <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_61;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
-      ex_ctrl_rxs1 <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_59;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
-      ex_ctrl_sel_alu2 <=
-        id_xcpt
-          ? ((|{_bpu_io_xcpt_if, _ibuf_io_inst_0_bits_xcpt0_pf_inst, _ibuf_io_inst_0_bits_xcpt0_gf_inst, _ibuf_io_inst_0_bits_xcpt0_ae_inst}) ? 3'h0 : {2'h0, |_GEN_13})
-          : {|{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_120, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_122, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[24], _ibuf_io_inst_0_bits_inst_bits[27], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]}, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], _ibuf_io_inst_0_bits_inst_bits[27], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]}},
-             |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_3, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_6, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_7, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_12, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_13, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_14, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_16, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_22, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_24, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_29, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_34, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_36, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_44, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_61, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_69, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_74, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_84, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_85, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_115, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_116, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_131, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_133, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_137, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_158, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_159, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_164, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169},
-             |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_3, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_6, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_7, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_25, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_29, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_35, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_37, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_44, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_71, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_76, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_120, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_134, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_149, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_158, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_159, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169}};	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, :422:19, :539:13, :544:20, :548:24, :549:{22,29,34}, :551:26, :554:{28,47,52}, :556:26, :1309:35, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
-      ex_ctrl_sel_alu1 <=
-        id_xcpt
-          ? ((|{_bpu_io_xcpt_if, _ibuf_io_inst_0_bits_xcpt0_pf_inst, _ibuf_io_inst_0_bits_xcpt0_gf_inst, _ibuf_io_inst_0_bits_xcpt0_ae_inst, _ibuf_io_inst_0_bits_xcpt1_pf_inst, _ibuf_io_inst_0_bits_xcpt1_gf_inst, _ibuf_io_inst_0_bits_xcpt1_ae_inst}) ? 2'h2 : 2'h1)
-          : {|{&{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4]}, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_88, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_115, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_116},
-             |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_3,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_6,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_12,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_13,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_14,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_16,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_24,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_29,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_34,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_36,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_42,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_44,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_52,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_56,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_61,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_63,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_84,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_85,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_90,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_95,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_102,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_115,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_116,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_120,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_122,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_133,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_149,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_152,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_158,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_159,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_164,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_184,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_185,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_192,
-               &_id_ctrl_decoder_decoded_andMatrixOutputs_T_193}};	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, :422:19, :539:13, :544:20, :547:24, :549:{29,34}, :550:26, :554:{28,47,52}, :555:26, :1309:35, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
-      ex_ctrl_sel_imm <= {|{&_id_ctrl_decoder_decoded_andMatrixOutputs_T, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_6, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_25, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[12]}, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_35, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_37, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[13], id_ctrl_decoder_decoded_invInputs[12]}, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_71, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_76, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_120, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_134, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_149, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_158, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_159, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169}, |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_7, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26}, |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_22, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_69, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_74}};	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
-      ex_ctrl_alu_dw <=
-        id_xcpt
-        | (|{&_id_ctrl_decoder_decoded_andMatrixOutputs_T,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_3,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_7,
-             &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], id_ctrl_decoder_decoded_invInputs[10], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], id_ctrl_decoder_decoded_invInputs[27], id_ctrl_decoder_decoded_invInputs[29]},
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_13,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_24,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_29,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_34,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_40,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_44,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_52,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_55,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_61,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_63,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_84,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_88,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_90,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_95,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_101,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_115,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_116,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_120,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_122,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_149,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_152,
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157,
-             &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[18], id_ctrl_decoder_decoded_invInputs[20], id_ctrl_decoder_decoded_invInputs[21], id_ctrl_decoder_decoded_invInputs[22], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
-             &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
-             &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169});	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, :539:13, :544:20, :546:22, :1309:35, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
-      ex_ctrl_alu_fn <= id_xcpt ? 5'h0 : id_ctrl_alu_fn;	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :539:13, :544:20, :545:22, :1309:35]
-      ex_ctrl_mem <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_29;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
-      ex_ctrl_mem_cmd <= _GEN_14 & _csr_io_status_v ? 5'h15 : id_ctrl_mem_cmd;	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :347:19, :539:13, :566:{40,60}, :567:23, generators/rocket-chip/src/main/scala/util/package.scala:16:47]
-      ex_ctrl_rfs1 <= |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_17, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_20, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_21, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_106, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_107, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_108, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_109, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_110, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_111, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_140, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_142, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_144, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_146, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_154, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_155, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_181, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_182, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_188, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_189};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}, :114:{19,36}]
-      ex_ctrl_rfs2 <= |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_17, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_20, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_21, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[12]}, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[13], id_ctrl_decoder_decoded_invInputs[12]}, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_106, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_107, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_108, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_109, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_110, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_111, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_154, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_155};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
-      ex_ctrl_wfd <=
-        |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_17,
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_20,
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_21,
-          &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[12]},
-          &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[13], id_ctrl_decoder_decoded_invInputs[12]},
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_110,
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_111,
-          &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[10], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], id_ctrl_decoder_decoded_invInputs[28], id_ctrl_decoder_decoded_invInputs[29]},
-          &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[10], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], id_ctrl_decoder_decoded_invInputs[28], id_ctrl_decoder_decoded_invInputs[29]},
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_141,
-          &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[18], _ibuf_io_inst_0_bits_inst_bits[21], id_ctrl_decoder_decoded_invInputs[20], id_ctrl_decoder_decoded_invInputs[21], id_ctrl_decoder_decoded_invInputs[22], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], id_ctrl_decoder_decoded_invInputs[27], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
-          &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[18], id_ctrl_decoder_decoded_invInputs[20], id_ctrl_decoder_decoded_invInputs[21], id_ctrl_decoder_decoded_invInputs[22], _ibuf_io_inst_0_bits_inst_bits[25], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], id_ctrl_decoder_decoded_invInputs[27], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
-          &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[19], id_ctrl_decoder_decoded_invInputs[20], id_ctrl_decoder_decoded_invInputs[21], id_ctrl_decoder_decoded_invInputs[22], id_ctrl_decoder_decoded_invInputs[23], _ibuf_io_inst_0_bits_inst_bits[26], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], id_ctrl_decoder_decoded_invInputs[27], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_154,
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_155,
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_184,
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_185,
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_192,
-          &_id_ctrl_decoder_decoded_andMatrixOutputs_T_193};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
-      ex_ctrl_div <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_12;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
-      ex_ctrl_wxd <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_10;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
-      ex_ctrl_csr <= id_system_insn & (|_id_ctrl_decoder_decoded_orMatrixOutputs_T_29) ? 3'h0 : id_csr_ren ? 3'h2 : id_ctrl_csr;	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :349:36, :350:54, :351:{19,35,61}, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
-      ex_ctrl_fence_i <= &_id_ctrl_decoder_decoded_andMatrixOutputs_T_33;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
-      ex_reg_rvc <= id_xcpt & (|_GEN_13) | _ibuf_io_inst_0_bits_rvc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:254:35, :317:20, :540:16, :544:20, :549:{22,29,34}, :552:20, :1309:35]
-      ex_reg_flush_pipe <= (&_id_ctrl_decoder_decoded_andMatrixOutputs_T_33) | id_system_insn | id_csr_en & ~id_csr_ren & _csr_io_decode_0_write_flush;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:257:35, :347:19, :349:36, :350:54, :352:{37,51,54,66}, :559:42, generators/rocket-chip/src/main/scala/util/package.scala:81:59, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
-      ex_reg_load_use <= mem_reg_valid & data_hazard_mem & mem_ctrl_mem;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :258:35, :270:36, :1028:38, :1031:{32,51}]
-      ex_reg_mem_size <= _GEN_14 | id_ctrl_mem_cmd == 5'h15 | id_ctrl_mem_cmd == 5'h16 | id_ctrl_mem_cmd == 5'h5 ? {|_ibuf_io_inst_0_bits_inst_rs2, |_ibuf_io_inst_0_bits_inst_rs1} : _ibuf_io_inst_0_bits_inst_bits[13:12];	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28, :317:20, :562:{21,95}, :563:81, :564:{23,29,40,59}, generators/rocket-chip/src/main/scala/util/package.scala:16:47, :81:59]
-      ex_reg_rs_bypass_0 <= ~_GEN_25 & do_bypass;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:473:29, :576:48, :578:27, :585:{27,47}, :587:27]
-      ex_reg_rs_bypass_1 <= do_bypass_1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:473:29, :576:48]
-      ex_reg_rs_lsb_0 <= _GEN_25 ? inst[1:0] : _GEN_24 ? id_rs_0[1:0] : (|_ibuf_io_inst_0_bits_inst_rs1) ? (id_bypass_src_0_1 ? 2'h1 : {1'h1, ~id_bypass_src_0_2}) : 2'h0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:317:20, :469:74, :474:26, :579:24, :580:{23,38}, :581:{26,37}, :585:{27,47}, :586:21, :588:{24,31}, :833:17, :1357:{19,41}, :1362:25, :1365:{31,39}, src/main/scala/chisel3/util/Mux.scala:50:70]
-      ex_reg_rs_lsb_1 <= _GEN_18 ? id_rs_1[1:0] : id_bypass_src_1_0 ? 2'h0 : id_bypass_src_1_1 ? 2'h1 : {1'h1, ~id_bypass_src_1_2};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:469:74, :474:26, :579:24, :580:{23,38}, :581:{26,37}, :833:17, :1357:{19,41}, :1362:25, :1365:{31,39}, src/main/scala/chisel3/util/Mux.scala:50:70]
-      if (_GEN_25)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:585:27]
-        ex_reg_rs_msb_0 <= {32'h0, inst[31:2]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26, :580:38, :585:47, :586:21, :589:{24,32}]
-      else if (_GEN_24)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:580:23]
-        ex_reg_rs_msb_0 <= id_rs_0[63:2];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26, :582:38, :833:17, :1357:19, :1362:25, :1365:{31,39}]
-    end
-    ex_ctrl_rocc <= ctrl_killd & ex_ctrl_rocc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :538:22, :539:13, :1076:{40,71,89,104}]
-    ex_ctrl_mul <= ctrl_killd & ex_ctrl_mul;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :538:22, :539:13, :1076:{40,71,89,104}]
-    if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :646:46, :648:28]
-    end
-    else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :646:46, :648:28]
-      mem_ctrl_fp <= ex_ctrl_fp;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_rocc <= ex_ctrl_rocc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_branch <= ex_ctrl_branch;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_jal <= ex_ctrl_jal;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_jalr <= ex_ctrl_jalr;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_rxs2 <= ex_ctrl_rxs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_rxs1 <= ex_ctrl_rxs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_mem <= ex_ctrl_mem;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_rfs1 <= ex_ctrl_rfs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_rfs2 <= ex_ctrl_rfs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_wfd <= ex_ctrl_wfd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_mul <= ex_ctrl_mul;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_div <= ex_ctrl_div;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_wxd <= ex_ctrl_wxd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_csr <= ex_ctrl_csr;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
-      mem_ctrl_fence_i <= _GEN_21 | ex_ctrl_fence_i;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21, :649:14, :678:{24,48}, :680:24]
-    end
-    mem_ctrl_vec <= _GEN_20 & mem_ctrl_vec;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :646:46, :648:28]
-    if (mem_pc_valid) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:622:{36,54}]
-      wb_ctrl_rocc <= mem_ctrl_rocc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_rxs2 <= mem_ctrl_rxs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_rxs1 <= mem_ctrl_rxs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_mem <= mem_ctrl_mem;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_rfs1 <= mem_ctrl_rfs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_rfs2 <= mem_ctrl_rfs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_wfd <= mem_ctrl_wfd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_div <= mem_ctrl_div;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_wxd <= mem_ctrl_wxd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_csr <= mem_ctrl_csr;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_fence_i <= mem_ctrl_fence_i;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_ctrl_vec <= mem_ctrl_vec;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
-      wb_reg_cause <= _GEN_22 ? mem_reg_cause : {60'h0, _GEN_23 ? 4'h0 : mem_debug_breakpoint ? 4'hE : 4'h3};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:276:36, :297:35, :686:64, :692:29, :693:20, src/main/scala/chisel3/util/Mux.scala:50:70]
-      wb_reg_sfence <= mem_reg_sfence;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:281:27, :299:26]
-      wb_reg_pc <= mem_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:282:23, :300:22]
-      wb_reg_mem_size <= mem_reg_mem_size;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:284:29, :301:28]
-      wb_reg_hls_or_dv <= mem_reg_hls_or_dv;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:285:30, :302:29]
-      wb_reg_inst <= mem_reg_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:283:25, :305:24]
-      wb_reg_raw_inst <= mem_reg_raw_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:286:29, :306:28]
-      wb_reg_wdata <= ~mem_reg_xcpt & mem_ctrl_fp & mem_ctrl_wxd ? io_fpu_toint_data : ~mem_reg_xcpt & (mem_ctrl_jalr ^ mem_npc_misaligned) ? {{24{_mem_br_target_T_9[39]}}, _mem_br_target_T_9} : mem_reg_wdata;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :273:36, :287:26, :307:25, :623:41, :631:{56,70}, :632:{26,27,41,59}, :720:{24,39,54}]
-    end
-    ex_reg_xcpt_interrupt <= ~ibuf_io_kill & _ibuf_io_inst_0_valid & _csr_io_interrupt;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:252:35, :313:35, :317:20, :347:19, :534:20, :536:{37,62}]
-    ex_reg_valid <= ~ctrl_killd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:253:35, :533:19, :1076:{40,71,89,104}]
-    if (~ctrl_killd | _csr_io_interrupt | _ibuf_io_inst_0_bits_replay) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:317:20, :347:19, :533:19, :592:{21,41}, :1076:{40,71,89,104}]
-      ex_reg_btb_resp_entry <= _ibuf_io_btb_resp_entry;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35, :317:20]
-      ex_reg_btb_resp_bht_history <= _ibuf_io_btb_resp_bht_history;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35, :317:20]
-      ex_reg_cause <= _csr_io_interrupt ? _csr_io_interrupt_cause : {59'h0, _bpu_io_debug_if ? 5'hE : _bpu_io_xcpt_if ? 5'h3 : _ibuf_io_inst_0_bits_xcpt0_pf_inst ? 5'hC : _ibuf_io_inst_0_bits_xcpt0_gf_inst ? 5'h14 : _ibuf_io_inst_0_bits_xcpt0_ae_inst ? 5'h1 : _ibuf_io_inst_0_bits_xcpt1_pf_inst ? 5'hC : _ibuf_io_inst_0_bits_xcpt1_gf_inst ? 5'h14 : _ibuf_io_inst_0_bits_xcpt1_ae_inst ? 5'h1 : id_virtual_insn ? 5'h16 : 5'h2};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:259:35, :317:20, :347:19, :402:39, :422:19, src/main/scala/chisel3/util/Mux.scala:50:70]
-      ex_reg_pc <= _ibuf_io_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22, :317:20]
-      ex_reg_inst <= _ibuf_io_inst_0_bits_inst_bits;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:264:24, :317:20]
-      ex_reg_raw_inst <= _ibuf_io_inst_0_bits_raw;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:265:28, :317:20]
-    end
-    ex_reg_xcpt <= ~ctrl_killd & id_xcpt;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:256:35, :533:19, :535:30, :1076:{40,71,89,104}, :1309:35]
-    ex_reg_replay <= ~ibuf_io_kill & _ibuf_io_inst_0_valid & _ibuf_io_inst_0_bits_replay;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:260:26, :313:35, :317:20, :534:{20,29,54}]
-    mem_reg_xcpt_interrupt <= ~ibuf_io_kill & ex_reg_xcpt_interrupt;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:252:35, :269:36, :313:35, :534:20, :642:45]
-    mem_reg_valid <= ~ctrl_killx;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:270:36, :610:{35,48}, :639:20]
-    if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :272:36, :646:46, :648:28]
-    end
-    else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:272:36, :646:46, :648:28]
-      mem_reg_rvc <= ex_reg_rvc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:254:35, :271:36]
-      mem_reg_btb_resp_entry <= ex_reg_btb_resp_entry;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35, :272:36]
-      mem_reg_btb_resp_bht_history <= ex_reg_btb_resp_bht_history;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35, :272:36]
-    end
-    mem_reg_xcpt <= ~ctrl_killx & (ex_reg_xcpt_interrupt | ex_reg_xcpt);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:252:35, :256:35, :273:36, :610:{35,48}, :616:28, :639:20, :641:31]
-    mem_reg_replay <= ~ibuf_io_kill & replay_ex;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:274:36, :313:35, :534:20, :609:33, :640:37]
-    if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :279:36, :646:46, :648:28]
-    end
-    else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:279:36, :646:46, :648:28]
-      mem_reg_flush_pipe <= _GEN_21 | ex_reg_flush_pipe;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:257:35, :275:36, :655:24, :678:{24,48}, :681:26]
-      mem_reg_cause <= ex_reg_cause;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:259:35, :276:36]
-      mem_mem_cmd_bh <= _io_dmem_req_bits_no_resp_T_3 | ~(ex_reg_mem_size[1]);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28, :277:36, :612:{40,50,69}]
-      mem_reg_load <= ex_ctrl_mem & (ex_ctrl_mem_cmd == 5'h0 | ex_ctrl_mem_cmd == 5'h10 | ex_ctrl_mem_cmd == 5'h6 | _io_dmem_req_bits_no_resp_T_3 | _mem_reg_store_T_5 | _mem_reg_store_T_6 | _mem_reg_store_T_7 | _mem_reg_store_T_8 | _mem_reg_store_T_12 | _mem_reg_store_T_13 | _mem_reg_store_T_14 | _mem_reg_store_T_15 | _mem_reg_store_T_16);	// @[generators/rocket-chip/src/main/scala/rocket/Consts.scala:87:44, :89:68, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :278:36, :612:40, :651:33, generators/rocket-chip/src/main/scala/util/package.scala:16:47, :81:59]
-      mem_reg_store <= ex_ctrl_mem & (ex_ctrl_mem_cmd == 5'h1 | ex_ctrl_mem_cmd == 5'h11 | _io_dmem_req_bits_no_resp_T_3 | _mem_reg_store_T_5 | _mem_reg_store_T_6 | _mem_reg_store_T_7 | _mem_reg_store_T_8 | _mem_reg_store_T_12 | _mem_reg_store_T_13 | _mem_reg_store_T_14 | _mem_reg_store_T_15 | _mem_reg_store_T_16);	// @[generators/rocket-chip/src/main/scala/rocket/Consts.scala:87:44, :90:{32,42,49,59,76}, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :279:36, :612:40, :652:34, generators/rocket-chip/src/main/scala/util/package.scala:16:47, :81:59]
-    end
-    mem_reg_sfence <= ~_GEN_19 & (ex_pc_valid ? ex_sfence : mem_reg_sfence);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:281:27, :603:{34,51}, :613:44, :646:{23,46}, :647:20, :648:28, :653:20]
-    if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :287:26, :646:46, :648:28]
-    end
-    else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:287:26, :646:46, :648:28]
-      mem_reg_pc <= ex_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22, :282:23]
-      mem_reg_inst <= ex_reg_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:264:24, :283:25]
-      mem_reg_mem_size <= ex_reg_mem_size;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28, :284:29]
-      mem_reg_hls_or_dv <= _csr_io_status_dv;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:285:30, :347:19]
-      mem_reg_raw_inst <= ex_reg_raw_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:265:28, :286:29]
-      mem_reg_wdata <= _alu_io_out;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:287:26, :512:19]
-    end
-    if (_GEN_19 | ~(ex_pc_valid & ex_ctrl_rxs2 & (ex_ctrl_mem | ex_ctrl_rocc | ex_sfence))) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :288:24, :603:{34,51}, :613:44, :646:{23,46}, :648:28, :671:{24,40,56,71}, :673:19]
-    end
-    else	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:288:24, :646:46, :648:28]
-      mem_reg_rs2 <= _GEN_15[ex_ctrl_rocc ? 2'h3 : ex_reg_mem_size];	// @[generators/rocket-chip/src/main/scala/rocket/AMOALU.scala:29:{13,19}, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :262:28, :288:24, :672:21]
-    if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :289:25, :646:46, :648:28]
-    end
-    else	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:289:25, :646:46, :648:28]
-      mem_br_taken <= _alu_io_cmp_out;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:289:25, :512:19]
-    wb_reg_valid <= ~ctrl_killm;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:293:35, :710:{33,45}, :713:19]
-    wb_reg_xcpt <= mem_xcpt & ~take_pc_wb;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:294:35, :714:34, :715:27, :771:{27,38,53}, :1309:35]
-    wb_reg_replay <= (dcache_kill_mem | mem_reg_replay | fpu_kill_mem) & ~take_pc_wb;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:274:36, :295:35, :703:55, :704:{36,51}, :707:{37,55}, :714:{31,34}, :771:{27,38,53}]
-    wb_reg_flush_pipe <= ~ctrl_killm & mem_reg_flush_pipe;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:275:36, :296:35, :710:{33,45}, :713:19, :716:36]
-    if (~ctrl_killd & _GEN_18)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26, :533:19, :538:22, :580:{23,38}, :582:26, :1076:{40,71,89,104}]
-      ex_reg_rs_msb_1 <= id_rs_1[63:2];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26, :582:38, :833:17, :1357:19, :1362:25, :1365:{31,39}]
-    div_io_kill_REG <= _div_io_req_ready & div_io_req_valid;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:519:19, :520:36, :709:41, src/main/scala/chisel3/util/Decoupled.scala:51:35]
-    dcache_blocked_blocked <= ~io_dmem_req_ready & ~io_dmem_perf_grant & (dcache_blocked_blocked | io_dmem_req_valid_0 | io_dmem_s2_nack);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:605:45, :1054:22, :1055:{60,63,83,95,116}, :1160:41]
-    rocc_blocked <= ~wb_xcpt & (_io_rocc_cmd_valid_T & ~replay_wb_common | rocc_blocked);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:415:53, :766:42, :824:48, :1058:25, :1059:{50,72}, :1089:47, :1186:53, :1309:35]
-    io_imem_progress_REG <= wb_reg_valid & ~replay_wb_common;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:293:35, :766:42, :1089:{30,44,47}]
-    coreMonitorBundle_rd0val_REG <= ex_rs_0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:477:14, :1230:46]
-    coreMonitorBundle_rd0val_REG_1 <= coreMonitorBundle_rd0val_REG;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1230:{38,46}]
-    coreMonitorBundle_rd1val_REG <= ex_rs_1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:477:14, :1232:46]
-    coreMonitorBundle_rd1val_REG_1 <= coreMonitorBundle_rd1val_REG;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1232:{38,46}]
-    if (reset) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-      id_reg_fence <= 1'h0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:339:29]
-      _r <= 32'h0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1336:29]
-      _id_stall_fpu_r <= 32'h0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1336:29]
-    end
-    else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-      id_reg_fence <= ~ctrl_killd & ((&_id_ctrl_decoder_decoded_andMatrixOutputs_T_5) | (|_id_ctrl_decoder_decoded_orMatrixOutputs_T_2) & _ibuf_io_inst_0_bits_inst_bits[26]) | id_mem_busy & id_reg_fence;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:317:20, :339:29, :406:29, :410:{37,52}, :411:38, :412:{23,38}, :533:19, :538:22, :543:{26,41}, :1076:{40,71,89,104}, src/main/scala/chisel3/util/pla.scala:98:{53,70}, :114:{19,36}]
-      if (ll_wen | _GEN_17)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:790:24, :818:44, :821:12, :1015:28, :1343:17]
-        _r <= _GEN_16 | (_GEN_17 ? _id_stall_fpu_T_4 : 32'h0);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1015:28, :1331:60, :1332:62, :1336:29, :1340:{49,58}]
-      else if (ll_wen)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:790:24, :818:44, :821:12]
-        _r <= _GEN_16;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1332:62, :1336:29]
-      _id_stall_fpu_r <= _id_stall_fpu_T_14 | io_fpu_sboard_clr ? _id_stall_fpu_T_13 & ~(io_fpu_sboard_clr ? 32'h1 << io_fpu_sboard_clra : 32'h0) : _id_stall_fpu_T_14 ? _id_stall_fpu_T_13 : {32{_id_stall_fpu_T_7}} & _id_stall_fpu_T_5 | _id_stall_fpu_r;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1044:89, :1332:{62,64}, :1336:29, :1340:{49,58}, :1343:17, :1344:{18,23}]
-    end
+      id_reg_pause <= ~(_csr_io_time[4:0] == 5'h0 | _csr_io_inhibit_cycle | io_dmem_perf_release | ibuf_io_kill) & (~ctrl_killd & (&_id_ctrl_decoder_decoded_andMatrixOutputs_T_5) & _ibuf_io_inst_0_bits_inst_bits[23:20] == 4'h0 | id_reg_pause);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:166:25, :313:35, :317:20, :347:19, :409:33, :533:19, :538:22, :542:{25,42,51,66}, :1076:{40,71,89,104}, :1194:{28,62,70,94,118}, :1195:{18,33}, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
+      imem_might_request_reg <= ex_pc_valid | mem_pc_valid | _csr_io_customCSRs_0_value[1];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:167:35, :347:19, :603:{34,51}, :622:{36,54}, :1086:{43,59}, generators/rocket-chip/src/main/scala/tile/CustomCSRs.scala:44:61]
+      if (~ctrl_killd) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1076:{40,71,89,104}]
+        ex_ctrl_fp <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_67;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
+        ex_ctrl_branch <= |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_22, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_63};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}, :114:{19,36}]
+        ex_ctrl_jal <= &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
+        ex_ctrl_jalr <= &_id_ctrl_decoder_decoded_andMatrixOutputs_T_25;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
+        ex_ctrl_rxs2 <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_61;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
+        ex_ctrl_rxs1 <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_59;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
+        ex_ctrl_sel_alu2 <=
+          id_xcpt
+            ? ((|{_bpu_io_xcpt_if, _ibuf_io_inst_0_bits_xcpt0_pf_inst, _ibuf_io_inst_0_bits_xcpt0_gf_inst, _ibuf_io_inst_0_bits_xcpt0_ae_inst}) ? 3'h0 : {2'h0, |_GEN_13})
+            : {|{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_120, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_122, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[24], _ibuf_io_inst_0_bits_inst_bits[27], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]}, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], _ibuf_io_inst_0_bits_inst_bits[27], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]}},
+              |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_3, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_6, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_7, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_12, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_13, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_14, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_16, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_22, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_24, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_29, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_34, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_36, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_44, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_61, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_69, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_74, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_84, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_85, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_115, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_116, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_131, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_133, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_137, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_158, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_159, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_164, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169},
+              |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_3, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_6, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_7, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_25, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_29, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_35, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_37, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_44, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_71, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_76, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_120, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_134, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_149, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_158, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_159, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169}};	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, :422:19, :539:13, :544:20, :548:24, :549:{22,29,34}, :551:26, :554:{28,47,52}, :556:26, :1309:35, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
+        ex_ctrl_sel_alu1 <=
+          id_xcpt
+            ? ((|{_bpu_io_xcpt_if, _ibuf_io_inst_0_bits_xcpt0_pf_inst, _ibuf_io_inst_0_bits_xcpt0_gf_inst, _ibuf_io_inst_0_bits_xcpt0_ae_inst, _ibuf_io_inst_0_bits_xcpt1_pf_inst, _ibuf_io_inst_0_bits_xcpt1_gf_inst, _ibuf_io_inst_0_bits_xcpt1_ae_inst}) ? 2'h2 : 2'h1)
+            : {|{&{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4]}, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_88, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_115, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_116},
+              |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_3,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_6,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_12,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_13,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_14,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_16,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_24,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_29,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_34,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_36,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_42,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_44,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_52,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_56,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_61,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_63,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_84,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_85,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_90,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_95,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_102,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_115,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_116,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_120,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_122,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_133,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_149,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_152,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_158,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_159,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_164,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_184,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_185,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_192,
+                &_id_ctrl_decoder_decoded_andMatrixOutputs_T_193}};	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, :422:19, :539:13, :544:20, :547:24, :549:{29,34}, :550:26, :554:{28,47,52}, :555:26, :1309:35, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
+        ex_ctrl_sel_imm <= {|{&_id_ctrl_decoder_decoded_andMatrixOutputs_T, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_6, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_25, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[12]}, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_35, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_37, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[13], id_ctrl_decoder_decoded_invInputs[12]}, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_71, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_76, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_120, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_134, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_149, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_158, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_159, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169}, |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_7, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26}, |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_22, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_69, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_74}};	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
+        ex_ctrl_alu_dw <=
+          id_xcpt
+          | (|{&_id_ctrl_decoder_decoded_andMatrixOutputs_T,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_2,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_3,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_7,
+              &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], id_ctrl_decoder_decoded_invInputs[10], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], id_ctrl_decoder_decoded_invInputs[27], id_ctrl_decoder_decoded_invInputs[29]},
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_13,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_24,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_26,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_29,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_34,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_40,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_44,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_48,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_52,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_55,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_61,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_63,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_84,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_88,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_89,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_90,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_91,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_95,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_101,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_115,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_116,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_120,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_122,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_124,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_130,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_149,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_152,
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_157,
+              &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[18], id_ctrl_decoder_decoded_invInputs[20], id_ctrl_decoder_decoded_invInputs[21], id_ctrl_decoder_decoded_invInputs[22], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
+              &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[11], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
+              &_id_ctrl_decoder_decoded_andMatrixOutputs_T_169});	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, :539:13, :544:20, :546:22, :1309:35, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
+        ex_ctrl_alu_fn <= id_xcpt ? 5'h0 : id_ctrl_alu_fn;	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :539:13, :544:20, :545:22, :1309:35]
+        ex_ctrl_mem <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_29;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
+        ex_ctrl_mem_cmd <= _GEN_14 & _csr_io_status_v ? 5'h15 : id_ctrl_mem_cmd;	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :347:19, :539:13, :566:{40,60}, :567:23, generators/rocket-chip/src/main/scala/util/package.scala:16:47]
+        ex_ctrl_rfs1 <= |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_17, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_20, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_21, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_106, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_107, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_108, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_109, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_110, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_111, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_140, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_142, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_144, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_146, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_154, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_155, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_181, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_182, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_188, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_189};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}, :114:{19,36}]
+        ex_ctrl_rfs2 <= |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_17, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_20, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_21, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[12]}, &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], _ibuf_io_inst_0_bits_inst_bits[5], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[13], id_ctrl_decoder_decoded_invInputs[12]}, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_106, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_107, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_108, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_109, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_110, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_111, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_154, &_id_ctrl_decoder_decoded_andMatrixOutputs_T_155};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
+        ex_ctrl_wfd <=
+          |{&_id_ctrl_decoder_decoded_andMatrixOutputs_T_17,
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_20,
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_21,
+            &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[12], id_ctrl_decoder_decoded_invInputs[12]},
+            &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], _ibuf_io_inst_0_bits_inst_bits[2], id_ctrl_decoder_decoded_invInputs[1], id_ctrl_decoder_decoded_invInputs[2], id_ctrl_decoder_decoded_invInputs[3], id_ctrl_decoder_decoded_invInputs[4], _ibuf_io_inst_0_bits_inst_bits[13], id_ctrl_decoder_decoded_invInputs[12]},
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_110,
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_111,
+            &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[10], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[23], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], id_ctrl_decoder_decoded_invInputs[28], id_ctrl_decoder_decoded_invInputs[29]},
+            &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[10], id_ctrl_decoder_decoded_invInputs[12], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], _ibuf_io_inst_0_bits_inst_bits[29], id_ctrl_decoder_decoded_invInputs[28], id_ctrl_decoder_decoded_invInputs[29]},
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_141,
+            &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[18], _ibuf_io_inst_0_bits_inst_bits[21], id_ctrl_decoder_decoded_invInputs[20], id_ctrl_decoder_decoded_invInputs[21], id_ctrl_decoder_decoded_invInputs[22], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], id_ctrl_decoder_decoded_invInputs[27], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
+            &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[18], id_ctrl_decoder_decoded_invInputs[20], id_ctrl_decoder_decoded_invInputs[21], id_ctrl_decoder_decoded_invInputs[22], _ibuf_io_inst_0_bits_inst_bits[25], id_ctrl_decoder_decoded_invInputs[24], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], id_ctrl_decoder_decoded_invInputs[27], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
+            &{_ibuf_io_inst_0_bits_inst_bits[0], _ibuf_io_inst_0_bits_inst_bits[1], id_ctrl_decoder_decoded_invInputs[0], id_ctrl_decoder_decoded_invInputs[1], _ibuf_io_inst_0_bits_inst_bits[4], id_ctrl_decoder_decoded_invInputs[3], _ibuf_io_inst_0_bits_inst_bits[6], id_ctrl_decoder_decoded_invInputs[19], id_ctrl_decoder_decoded_invInputs[20], id_ctrl_decoder_decoded_invInputs[21], id_ctrl_decoder_decoded_invInputs[22], id_ctrl_decoder_decoded_invInputs[23], _ibuf_io_inst_0_bits_inst_bits[26], id_ctrl_decoder_decoded_invInputs[25], id_ctrl_decoder_decoded_invInputs[26], id_ctrl_decoder_decoded_invInputs[27], _ibuf_io_inst_0_bits_inst_bits[30], id_ctrl_decoder_decoded_invInputs[29]},
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_154,
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_155,
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_184,
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_185,
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_192,
+            &_id_ctrl_decoder_decoded_andMatrixOutputs_T_193};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :317:20, src/main/scala/chisel3/util/pla.scala:78:21, :90:45, :91:29, :98:{53,70}, :114:{19,36}]
+        ex_ctrl_div <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_12;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
+        ex_ctrl_wxd <= |_id_ctrl_decoder_decoded_orMatrixOutputs_T_10;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
+        ex_ctrl_csr <= id_system_insn & (|_id_ctrl_decoder_decoded_orMatrixOutputs_T_29) ? 3'h0 : id_csr_ren ? 3'h2 : id_ctrl_csr;	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :349:36, :350:54, :351:{19,35,61}, src/main/scala/chisel3/util/pla.scala:114:{19,36}]
+        ex_ctrl_fence_i <= &_id_ctrl_decoder_decoded_andMatrixOutputs_T_33;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
+        ex_reg_rvc <= id_xcpt & (|_GEN_13) | _ibuf_io_inst_0_bits_rvc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:254:35, :317:20, :540:16, :544:20, :549:{22,29,34}, :552:20, :1309:35]
+        ex_reg_flush_pipe <= (&_id_ctrl_decoder_decoded_andMatrixOutputs_T_33) | id_system_insn | id_csr_en & ~id_csr_ren & _csr_io_decode_0_write_flush;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:257:35, :347:19, :349:36, :350:54, :352:{37,51,54,66}, :559:42, generators/rocket-chip/src/main/scala/util/package.scala:81:59, src/main/scala/chisel3/util/pla.scala:98:{53,70}]
+        ex_reg_load_use <= mem_reg_valid & data_hazard_mem & mem_ctrl_mem;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :258:35, :270:36, :1028:38, :1031:{32,51}]
+        ex_reg_mem_size <= _GEN_14 | id_ctrl_mem_cmd == 5'h15 | id_ctrl_mem_cmd == 5'h16 | id_ctrl_mem_cmd == 5'h5 ? {|_ibuf_io_inst_0_bits_inst_rs2, |_ibuf_io_inst_0_bits_inst_rs1} : _ibuf_io_inst_0_bits_inst_bits[13:12];	// @[generators/rocket-chip/src/main/scala/rocket/Decode.scala:50:77, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28, :317:20, :562:{21,95}, :563:81, :564:{23,29,40,59}, generators/rocket-chip/src/main/scala/util/package.scala:16:47, :81:59]
+        ex_reg_rs_bypass_0 <= ~_GEN_25 & do_bypass;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:473:29, :576:48, :578:27, :585:{27,47}, :587:27]
+        ex_reg_rs_bypass_1 <= do_bypass_1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:473:29, :576:48]
+        ex_reg_rs_lsb_0 <= _GEN_25 ? inst[1:0] : _GEN_24 ? id_rs_0[1:0] : (|_ibuf_io_inst_0_bits_inst_rs1) ? (id_bypass_src_0_1 ? 2'h1 : {1'h1, ~id_bypass_src_0_2}) : 2'h0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:317:20, :469:74, :474:26, :579:24, :580:{23,38}, :581:{26,37}, :585:{27,47}, :586:21, :588:{24,31}, :833:17, :1357:{19,41}, :1362:25, :1365:{31,39}, src/main/scala/chisel3/util/Mux.scala:50:70]
+        ex_reg_rs_lsb_1 <= _GEN_18 ? id_rs_1[1:0] : id_bypass_src_1_0 ? 2'h0 : id_bypass_src_1_1 ? 2'h1 : {1'h1, ~id_bypass_src_1_2};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:469:74, :474:26, :579:24, :580:{23,38}, :581:{26,37}, :833:17, :1357:{19,41}, :1362:25, :1365:{31,39}, src/main/scala/chisel3/util/Mux.scala:50:70]
+        if (_GEN_25)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:585:27]
+          ex_reg_rs_msb_0 <= {32'h0, inst[31:2]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26, :580:38, :585:47, :586:21, :589:{24,32}]
+        else if (_GEN_24)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:580:23]
+          ex_reg_rs_msb_0 <= id_rs_0[63:2];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26, :582:38, :833:17, :1357:19, :1362:25, :1365:{31,39}]
+      end
+      ex_ctrl_rocc <= ctrl_killd & ex_ctrl_rocc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :538:22, :539:13, :1076:{40,71,89,104}]
+      ex_ctrl_mul <= ctrl_killd & ex_ctrl_mul;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :538:22, :539:13, :1076:{40,71,89,104}]
+      if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :646:46, :648:28]
+      end
+      else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :646:46, :648:28]
+        mem_ctrl_fp <= ex_ctrl_fp;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_rocc <= ex_ctrl_rocc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_branch <= ex_ctrl_branch;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_jal <= ex_ctrl_jal;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_jalr <= ex_ctrl_jalr;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_rxs2 <= ex_ctrl_rxs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_rxs1 <= ex_ctrl_rxs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_mem <= ex_ctrl_mem;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_rfs1 <= ex_ctrl_rfs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_rfs2 <= ex_ctrl_rfs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_wfd <= ex_ctrl_wfd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_mul <= ex_ctrl_mul;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_div <= ex_ctrl_div;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_wxd <= ex_ctrl_wxd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_csr <= ex_ctrl_csr;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21]
+        mem_ctrl_fence_i <= _GEN_21 | ex_ctrl_fence_i;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21, :649:14, :678:{24,48}, :680:24]
+      end
+      mem_ctrl_vec <= _GEN_20 & mem_ctrl_vec;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :646:46, :648:28]
+      if (mem_pc_valid) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:622:{36,54}]
+        wb_ctrl_rocc <= mem_ctrl_rocc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_rxs2 <= mem_ctrl_rxs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_rxs1 <= mem_ctrl_rxs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_mem <= mem_ctrl_mem;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_rfs1 <= mem_ctrl_rfs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_rfs2 <= mem_ctrl_rfs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_wfd <= mem_ctrl_wfd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_div <= mem_ctrl_div;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_wxd <= mem_ctrl_wxd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_csr <= mem_ctrl_csr;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_fence_i <= mem_ctrl_fence_i;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_ctrl_vec <= mem_ctrl_vec;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
+        wb_reg_cause <= _GEN_22 ? mem_reg_cause : {60'h0, _GEN_23 ? 4'h0 : mem_debug_breakpoint ? 4'hE : 4'h3};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:276:36, :297:35, :686:64, :692:29, :693:20, src/main/scala/chisel3/util/Mux.scala:50:70]
+        wb_reg_sfence <= mem_reg_sfence;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:281:27, :299:26]
+        wb_reg_pc <= mem_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:282:23, :300:22]
+        wb_reg_mem_size <= mem_reg_mem_size;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:284:29, :301:28]
+        wb_reg_hls_or_dv <= mem_reg_hls_or_dv;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:285:30, :302:29]
+        wb_reg_inst <= mem_reg_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:283:25, :305:24]
+        wb_reg_raw_inst <= mem_reg_raw_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:286:29, :306:28]
+        wb_reg_wdata <= ~mem_reg_xcpt & mem_ctrl_fp & mem_ctrl_wxd ? io_fpu_toint_data : ~mem_reg_xcpt & (mem_ctrl_jalr ^ mem_npc_misaligned) ? {{24{_mem_br_target_T_9[39]}}, _mem_br_target_T_9} : mem_reg_wdata;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :273:36, :287:26, :307:25, :623:41, :631:{56,70}, :632:{26,27,41,59}, :720:{24,39,54}]
+      end else begin
+        // REPORT: report this fix
+        wb_reg_pc <= '0;
+      end
+      ex_reg_xcpt_interrupt <= ~ibuf_io_kill & _ibuf_io_inst_0_valid & _csr_io_interrupt;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:252:35, :313:35, :317:20, :347:19, :534:20, :536:{37,62}]
+      ex_reg_valid <= ~ctrl_killd;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:253:35, :533:19, :1076:{40,71,89,104}]
+      if (~ctrl_killd | _csr_io_interrupt | _ibuf_io_inst_0_bits_replay) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:317:20, :347:19, :533:19, :592:{21,41}, :1076:{40,71,89,104}]
+        ex_reg_btb_resp_entry <= _ibuf_io_btb_resp_entry;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35, :317:20]
+        ex_reg_btb_resp_bht_history <= _ibuf_io_btb_resp_bht_history;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35, :317:20]
+        ex_reg_cause <= _csr_io_interrupt ? _csr_io_interrupt_cause : {59'h0, _bpu_io_debug_if ? 5'hE : _bpu_io_xcpt_if ? 5'h3 : _ibuf_io_inst_0_bits_xcpt0_pf_inst ? 5'hC : _ibuf_io_inst_0_bits_xcpt0_gf_inst ? 5'h14 : _ibuf_io_inst_0_bits_xcpt0_ae_inst ? 5'h1 : _ibuf_io_inst_0_bits_xcpt1_pf_inst ? 5'hC : _ibuf_io_inst_0_bits_xcpt1_gf_inst ? 5'h14 : _ibuf_io_inst_0_bits_xcpt1_ae_inst ? 5'h1 : id_virtual_insn ? 5'h16 : 5'h2};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:259:35, :317:20, :347:19, :402:39, :422:19, src/main/scala/chisel3/util/Mux.scala:50:70]
+        ex_reg_pc <= _ibuf_io_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22, :317:20]
+        ex_reg_inst <= _ibuf_io_inst_0_bits_inst_bits;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:264:24, :317:20]
+        ex_reg_raw_inst <= _ibuf_io_inst_0_bits_raw;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:265:28, :317:20]
+      end else begin 
+        // REPORT
+        ex_reg_pc <= '0;
+      end
+      ex_reg_xcpt <= ~ctrl_killd & id_xcpt;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:256:35, :533:19, :535:30, :1076:{40,71,89,104}, :1309:35]
+      ex_reg_replay <= ~ibuf_io_kill & _ibuf_io_inst_0_valid & _ibuf_io_inst_0_bits_replay;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:260:26, :313:35, :317:20, :534:{20,29,54}]
+      mem_reg_xcpt_interrupt <= ~ibuf_io_kill & ex_reg_xcpt_interrupt;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:252:35, :269:36, :313:35, :534:20, :642:45]
+      mem_reg_valid <= ~ctrl_killx;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:270:36, :610:{35,48}, :639:20]
+      if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :272:36, :646:46, :648:28]
+      end
+      else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:272:36, :646:46, :648:28]
+        mem_reg_rvc <= ex_reg_rvc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:254:35, :271:36]
+        mem_reg_btb_resp_entry <= ex_reg_btb_resp_entry;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35, :272:36]
+        mem_reg_btb_resp_bht_history <= ex_reg_btb_resp_bht_history;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:255:35, :272:36]
+      end
+      mem_reg_xcpt <= ~ctrl_killx & (ex_reg_xcpt_interrupt | ex_reg_xcpt);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:252:35, :256:35, :273:36, :610:{35,48}, :616:28, :639:20, :641:31]
+      mem_reg_replay <= ~ibuf_io_kill & replay_ex;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:274:36, :313:35, :534:20, :609:33, :640:37]
+      if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :279:36, :646:46, :648:28]
+      end
+      else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:279:36, :646:46, :648:28]
+        mem_reg_flush_pipe <= _GEN_21 | ex_reg_flush_pipe;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:257:35, :275:36, :655:24, :678:{24,48}, :681:26]
+        mem_reg_cause <= ex_reg_cause;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:259:35, :276:36]
+        mem_mem_cmd_bh <= _io_dmem_req_bits_no_resp_T_3 | ~(ex_reg_mem_size[1]);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28, :277:36, :612:{40,50,69}]
+        mem_reg_load <= ex_ctrl_mem & (ex_ctrl_mem_cmd == 5'h0 | ex_ctrl_mem_cmd == 5'h10 | ex_ctrl_mem_cmd == 5'h6 | _io_dmem_req_bits_no_resp_T_3 | _mem_reg_store_T_5 | _mem_reg_store_T_6 | _mem_reg_store_T_7 | _mem_reg_store_T_8 | _mem_reg_store_T_12 | _mem_reg_store_T_13 | _mem_reg_store_T_14 | _mem_reg_store_T_15 | _mem_reg_store_T_16);	// @[generators/rocket-chip/src/main/scala/rocket/Consts.scala:87:44, :89:68, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :278:36, :612:40, :651:33, generators/rocket-chip/src/main/scala/util/package.scala:16:47, :81:59]
+        mem_reg_store <= ex_ctrl_mem & (ex_ctrl_mem_cmd == 5'h1 | ex_ctrl_mem_cmd == 5'h11 | _io_dmem_req_bits_no_resp_T_3 | _mem_reg_store_T_5 | _mem_reg_store_T_6 | _mem_reg_store_T_7 | _mem_reg_store_T_8 | _mem_reg_store_T_12 | _mem_reg_store_T_13 | _mem_reg_store_T_14 | _mem_reg_store_T_15 | _mem_reg_store_T_16);	// @[generators/rocket-chip/src/main/scala/rocket/Consts.scala:87:44, :90:{32,42,49,59,76}, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :279:36, :612:40, :652:34, generators/rocket-chip/src/main/scala/util/package.scala:16:47, :81:59]
+      end
+      mem_reg_sfence <= ~_GEN_19 & (ex_pc_valid ? ex_sfence : mem_reg_sfence);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:281:27, :603:{34,51}, :613:44, :646:{23,46}, :647:20, :648:28, :653:20]
+      if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :287:26, :646:46, :648:28]
+        // REPORT
+        mem_reg_pc <= '0;
+      end
+      else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:287:26, :646:46, :648:28]
+        mem_reg_pc <= ex_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22, :282:23]
+        mem_reg_inst <= ex_reg_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:264:24, :283:25]
+        mem_reg_mem_size <= ex_reg_mem_size;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28, :284:29]
+        mem_reg_hls_or_dv <= _csr_io_status_dv;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:285:30, :347:19]
+        mem_reg_raw_inst <= ex_reg_raw_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:265:28, :286:29]
+        mem_reg_wdata <= _alu_io_out;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:287:26, :512:19]
+      end
+      if (_GEN_19 | ~(ex_pc_valid & ex_ctrl_rxs2 & (ex_ctrl_mem | ex_ctrl_rocc | ex_sfence))) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :288:24, :603:{34,51}, :613:44, :646:{23,46}, :648:28, :671:{24,40,56,71}, :673:19]
+      end
+      else	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:288:24, :646:46, :648:28]
+        mem_reg_rs2 <= _GEN_15[ex_ctrl_rocc ? 2'h3 : ex_reg_mem_size];	// @[generators/rocket-chip/src/main/scala/rocket/AMOALU.scala:29:{13,19}, generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :262:28, :288:24, :672:21]
+      if (_GEN_20) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :289:25, :646:46, :648:28]
+      end
+      else	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:289:25, :646:46, :648:28]
+        mem_br_taken <= _alu_io_cmp_out;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:289:25, :512:19]
+      wb_reg_valid <= ~ctrl_killm;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:293:35, :710:{33,45}, :713:19]
+      wb_reg_xcpt <= mem_xcpt & ~take_pc_wb;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:294:35, :714:34, :715:27, :771:{27,38,53}, :1309:35]
+      wb_reg_replay <= (dcache_kill_mem | mem_reg_replay | fpu_kill_mem) & ~take_pc_wb;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:274:36, :295:35, :703:55, :704:{36,51}, :707:{37,55}, :714:{31,34}, :771:{27,38,53}]
+      wb_reg_flush_pipe <= ~ctrl_killm & mem_reg_flush_pipe;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:275:36, :296:35, :710:{33,45}, :713:19, :716:36]
+      if (~ctrl_killd & _GEN_18)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26, :533:19, :538:22, :580:{23,38}, :582:26, :1076:{40,71,89,104}]
+        ex_reg_rs_msb_1 <= id_rs_1[63:2];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:475:26, :582:38, :833:17, :1357:19, :1362:25, :1365:{31,39}]
+      div_io_kill_REG <= _div_io_req_ready & div_io_req_valid;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:519:19, :520:36, :709:41, src/main/scala/chisel3/util/Decoupled.scala:51:35]
+      dcache_blocked_blocked <= ~io_dmem_req_ready & ~io_dmem_perf_grant & (dcache_blocked_blocked | io_dmem_req_valid_0 | io_dmem_s2_nack);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:605:45, :1054:22, :1055:{60,63,83,95,116}, :1160:41]
+      rocc_blocked <= ~wb_xcpt & (_io_rocc_cmd_valid_T & ~replay_wb_common | rocc_blocked);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:415:53, :766:42, :824:48, :1058:25, :1059:{50,72}, :1089:47, :1186:53, :1309:35]
+      io_imem_progress_REG <= wb_reg_valid & ~replay_wb_common;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:293:35, :766:42, :1089:{30,44,47}]
+      coreMonitorBundle_rd0val_REG <= ex_rs_0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:477:14, :1230:46]
+      coreMonitorBundle_rd0val_REG_1 <= coreMonitorBundle_rd0val_REG;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1230:{38,46}]
+      coreMonitorBundle_rd1val_REG <= ex_rs_1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:477:14, :1232:46]
+      coreMonitorBundle_rd1val_REG_1 <= coreMonitorBundle_rd1val_REG;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1232:{38,46}]
+      if (reset) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
+        id_reg_fence <= 1'h0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:339:29]
+        _r <= 32'h0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1336:29]
+        _id_stall_fpu_r <= 32'h0;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1336:29]
+      end
+      else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
+        id_reg_fence <= ~ctrl_killd & ((&_id_ctrl_decoder_decoded_andMatrixOutputs_T_5) | (|_id_ctrl_decoder_decoded_orMatrixOutputs_T_2) & _ibuf_io_inst_0_bits_inst_bits[26]) | id_mem_busy & id_reg_fence;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:317:20, :339:29, :406:29, :410:{37,52}, :411:38, :412:{23,38}, :533:19, :538:22, :543:{26,41}, :1076:{40,71,89,104}, src/main/scala/chisel3/util/pla.scala:98:{53,70}, :114:{19,36}]
+        if (ll_wen | _GEN_17)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:790:24, :818:44, :821:12, :1015:28, :1343:17]
+          _r <= _GEN_16 | (_GEN_17 ? _id_stall_fpu_T_4 : 32'h0);	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1015:28, :1331:60, :1332:62, :1336:29, :1340:{49,58}]
+        else if (ll_wen)	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:790:24, :818:44, :821:12]
+          _r <= _GEN_16;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1332:62, :1336:29]
+        _id_stall_fpu_r <= _id_stall_fpu_T_14 | io_fpu_sboard_clr ? _id_stall_fpu_T_13 & ~(io_fpu_sboard_clr ? 32'h1 << io_fpu_sboard_clra : 32'h0) : _id_stall_fpu_T_14 ? _id_stall_fpu_T_13 : {32{_id_stall_fpu_T_7}} & _id_stall_fpu_T_5 | _id_stall_fpu_r;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:1044:89, :1332:{62,64}, :1336:29, :1340:{49,58}, :1343:17, :1344:{18,23}]
+      end
     end
   end // always @(posedge)
-  `ifdef ENABLE_INITIAL_REG_	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-    `ifdef FIRRTL_BEFORE_INITIAL	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-      `FIRRTL_BEFORE_INITIAL	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-    `endif // FIRRTL_BEFORE_INITIAL
-    logic [31:0] _RANDOM[0:47];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-    initial begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-      `ifdef INIT_RANDOM_PROLOG_	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-        `INIT_RANDOM_PROLOG_	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-      `endif // INIT_RANDOM_PROLOG_
-      `ifdef RANDOMIZE_REG_INIT	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-        for (logic [5:0] i = 6'h0; i < 6'h30; i += 6'h1) begin
-          _RANDOM[i] = `RANDOM;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-        end	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-        id_reg_pause = _RANDOM[6'h0][2];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25]
-        imem_might_request_reg = _RANDOM[6'h0][3];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :167:35]
-        ex_ctrl_fp = _RANDOM[6'h0][5];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_rocc = _RANDOM[6'h0][6];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_branch = _RANDOM[6'h0][7];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_jal = _RANDOM[6'h0][8];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_jalr = _RANDOM[6'h0][9];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_rxs2 = _RANDOM[6'h0][10];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_rxs1 = _RANDOM[6'h0][11];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_sel_alu2 = _RANDOM[6'h0][14:12];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_sel_alu1 = _RANDOM[6'h0][16:15];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_sel_imm = _RANDOM[6'h0][19:17];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_alu_dw = _RANDOM[6'h0][20];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_alu_fn = _RANDOM[6'h0][25:21];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_mem = _RANDOM[6'h0][26];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_mem_cmd = _RANDOM[6'h0][31:27];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :166:25, :248:20]
-        ex_ctrl_rfs1 = _RANDOM[6'h1][0];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20]
-        ex_ctrl_rfs2 = _RANDOM[6'h1][1];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20]
-        ex_ctrl_wfd = _RANDOM[6'h1][3];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20]
-        ex_ctrl_mul = _RANDOM[6'h1][4];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20]
-        ex_ctrl_div = _RANDOM[6'h1][5];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20]
-        ex_ctrl_wxd = _RANDOM[6'h1][6];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20]
-        ex_ctrl_csr = _RANDOM[6'h1][9:7];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20]
-        ex_ctrl_fence_i = _RANDOM[6'h1][10];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20]
-        mem_ctrl_fp = _RANDOM[6'h1][16];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20, :249:21]
-        mem_ctrl_rocc = _RANDOM[6'h1][17];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20, :249:21]
-        mem_ctrl_branch = _RANDOM[6'h1][18];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20, :249:21]
-        mem_ctrl_jal = _RANDOM[6'h1][19];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20, :249:21]
-        mem_ctrl_jalr = _RANDOM[6'h1][20];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20, :249:21]
-        mem_ctrl_rxs2 = _RANDOM[6'h1][21];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20, :249:21]
-        mem_ctrl_rxs1 = _RANDOM[6'h1][22];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :248:20, :249:21]
-        mem_ctrl_mem = _RANDOM[6'h2][5];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_rfs1 = _RANDOM[6'h2][11];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_rfs2 = _RANDOM[6'h2][12];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_wfd = _RANDOM[6'h2][14];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_mul = _RANDOM[6'h2][15];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_div = _RANDOM[6'h2][16];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_wxd = _RANDOM[6'h2][17];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_csr = _RANDOM[6'h2][20:18];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_fence_i = _RANDOM[6'h2][21];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        mem_ctrl_vec = _RANDOM[6'h2][25];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21]
-        wb_ctrl_rocc = _RANDOM[6'h2][28];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :249:21, :250:20]
-        wb_ctrl_rxs2 = _RANDOM[6'h3][0];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_rxs1 = _RANDOM[6'h3][1];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_mem = _RANDOM[6'h3][16];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_rfs1 = _RANDOM[6'h3][22];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_rfs2 = _RANDOM[6'h3][23];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_wfd = _RANDOM[6'h3][25];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_div = _RANDOM[6'h3][27];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_wxd = _RANDOM[6'h3][28];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_csr = _RANDOM[6'h3][31:29];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_fence_i = _RANDOM[6'h4][0];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        wb_ctrl_vec = _RANDOM[6'h4][4];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20]
-        ex_reg_xcpt_interrupt = _RANDOM[6'h4][5];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20, :252:35]
-        ex_reg_valid = _RANDOM[6'h4][6];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20, :253:35]
-        ex_reg_rvc = _RANDOM[6'h4][7];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :250:20, :254:35]
-        ex_reg_btb_resp_entry = _RANDOM[6'h5][25:21];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :255:35]
-        ex_reg_btb_resp_bht_history = {_RANDOM[6'h5][31:26], _RANDOM[6'h6][1:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :255:35]
-        ex_reg_xcpt = _RANDOM[6'h6][3];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :255:35, :256:35]
-        ex_reg_flush_pipe = _RANDOM[6'h6][4];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :255:35, :257:35]
-        ex_reg_load_use = _RANDOM[6'h6][5];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :255:35, :258:35]
-        ex_reg_cause = {_RANDOM[6'h6][31:6], _RANDOM[6'h7], _RANDOM[6'h8][5:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :255:35, :259:35]
-        ex_reg_replay = _RANDOM[6'h8][6];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :259:35, :260:26]
-        ex_reg_pc = {_RANDOM[6'h8][31:7], _RANDOM[6'h9][14:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :259:35, :261:22]
-        ex_reg_mem_size = _RANDOM[6'h9][16:15];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :261:22, :262:28]
-        ex_reg_inst = {_RANDOM[6'h9][31:18], _RANDOM[6'hA][17:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :261:22, :264:24]
-        ex_reg_raw_inst = {_RANDOM[6'hA][31:18], _RANDOM[6'hB][17:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :264:24, :265:28]
-        mem_reg_xcpt_interrupt = _RANDOM[6'hB][20];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :265:28, :269:36]
-        mem_reg_valid = _RANDOM[6'hB][21];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :265:28, :270:36]
-        mem_reg_rvc = _RANDOM[6'hB][22];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :265:28, :271:36]
-        mem_reg_btb_resp_entry = _RANDOM[6'hD][8:4];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :272:36]
-        mem_reg_btb_resp_bht_history = _RANDOM[6'hD][16:9];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :272:36]
-        mem_reg_xcpt = _RANDOM[6'hD][18];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :272:36, :273:36]
-        mem_reg_replay = _RANDOM[6'hD][19];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :272:36, :274:36]
-        mem_reg_flush_pipe = _RANDOM[6'hD][20];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :272:36, :275:36]
-        mem_reg_cause = {_RANDOM[6'hD][31:21], _RANDOM[6'hE], _RANDOM[6'hF][20:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :272:36, :276:36]
-        mem_mem_cmd_bh = _RANDOM[6'hF][21];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :276:36, :277:36]
-        mem_reg_load = _RANDOM[6'hF][22];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :276:36, :278:36]
-        mem_reg_store = _RANDOM[6'hF][23];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :276:36, :279:36]
-        mem_reg_sfence = _RANDOM[6'hF][25];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :276:36, :281:27]
-        mem_reg_pc = {_RANDOM[6'hF][31:26], _RANDOM[6'h10], _RANDOM[6'h11][1:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :276:36, :282:23]
-        mem_reg_inst = {_RANDOM[6'h11][31:2], _RANDOM[6'h12][1:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :282:23, :283:25]
-        mem_reg_mem_size = _RANDOM[6'h12][3:2];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :283:25, :284:29]
-        mem_reg_hls_or_dv = _RANDOM[6'h12][4];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :283:25, :285:30]
-        mem_reg_raw_inst = {_RANDOM[6'h12][31:5], _RANDOM[6'h13][4:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :283:25, :286:29]
-        mem_reg_wdata = {_RANDOM[6'h13][31:5], _RANDOM[6'h14], _RANDOM[6'h15][4:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :286:29, :287:26]
-        mem_reg_rs2 = {_RANDOM[6'h15][31:5], _RANDOM[6'h16], _RANDOM[6'h17][4:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :287:26, :288:24]
-        mem_br_taken = _RANDOM[6'h17][5];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :288:24, :289:25]
-        wb_reg_valid = _RANDOM[6'h17][7];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :288:24, :293:35]
-        wb_reg_xcpt = _RANDOM[6'h17][8];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :288:24, :294:35]
-        wb_reg_replay = _RANDOM[6'h17][9];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :288:24, :295:35]
-        wb_reg_flush_pipe = _RANDOM[6'h17][10];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :288:24, :296:35]
-        wb_reg_cause = {_RANDOM[6'h17][31:11], _RANDOM[6'h18], _RANDOM[6'h19][10:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :288:24, :297:35]
-        wb_reg_sfence = _RANDOM[6'h19][12];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :297:35, :299:26]
-        wb_reg_pc = {_RANDOM[6'h19][31:13], _RANDOM[6'h1A][20:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :297:35, :300:22]
-        wb_reg_mem_size = _RANDOM[6'h1A][22:21];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :300:22, :301:28]
-        wb_reg_hls_or_dv = _RANDOM[6'h1A][23];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :300:22, :302:29]
-        wb_reg_inst = {_RANDOM[6'h1A][31:26], _RANDOM[6'h1B][25:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :300:22, :305:24]
-        wb_reg_raw_inst = {_RANDOM[6'h1B][31:26], _RANDOM[6'h1C][25:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :305:24, :306:28]
-        wb_reg_wdata = {_RANDOM[6'h1C][31:26], _RANDOM[6'h1D], _RANDOM[6'h1E][25:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :306:28, :307:25]
-        id_reg_fence = _RANDOM[6'h20][28];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :339:29]
-        ex_reg_rs_bypass_0 = _RANDOM[6'h20][29];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :339:29, :473:29]
-        ex_reg_rs_bypass_1 = _RANDOM[6'h20][30];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :339:29, :473:29]
-        ex_reg_rs_lsb_0 = {_RANDOM[6'h20][31], _RANDOM[6'h21][0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :339:29, :474:26]
-        ex_reg_rs_lsb_1 = _RANDOM[6'h21][2:1];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :474:26]
-        ex_reg_rs_msb_0 = {_RANDOM[6'h21][31:3], _RANDOM[6'h22], _RANDOM[6'h23][0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :474:26, :475:26]
-        ex_reg_rs_msb_1 = {_RANDOM[6'h23][31:1], _RANDOM[6'h24][30:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :475:26]
-        div_io_kill_REG = _RANDOM[6'h24][31];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :475:26, :709:41]
-        _r = _RANDOM[6'h25];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1336:29]
-        _id_stall_fpu_r = _RANDOM[6'h26];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1336:29]
-        dcache_blocked_blocked = _RANDOM[6'h27][0];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1054:22]
-        rocc_blocked = _RANDOM[6'h27][1];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1054:22, :1058:25]
-        io_imem_progress_REG = _RANDOM[6'h27][2];	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1054:22, :1089:30]
-        coreMonitorBundle_rd0val_REG = {_RANDOM[6'h27][31:4], _RANDOM[6'h28], _RANDOM[6'h29][3:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1054:22, :1230:46]
-        coreMonitorBundle_rd0val_REG_1 = {_RANDOM[6'h29][31:4], _RANDOM[6'h2A], _RANDOM[6'h2B][3:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1230:{38,46}]
-        coreMonitorBundle_rd1val_REG = {_RANDOM[6'h2B][31:4], _RANDOM[6'h2C], _RANDOM[6'h2D][3:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1230:38, :1232:46]
-        coreMonitorBundle_rd1val_REG_1 = {_RANDOM[6'h2D][31:4], _RANDOM[6'h2E], _RANDOM[6'h2F][3:0]};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7, :1232:{38,46}]
-      `endif // RANDOMIZE_REG_INIT
-    end // initial
-    `ifdef FIRRTL_AFTER_INITIAL	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-      `FIRRTL_AFTER_INITIAL	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:158:7]
-    `endif // FIRRTL_AFTER_INITIAL
-  `endif // ENABLE_INITIAL_REG_
+
   IBuf ibuf (	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:317:20]
     .clock                        (clock),
     .reset                        (reset),
