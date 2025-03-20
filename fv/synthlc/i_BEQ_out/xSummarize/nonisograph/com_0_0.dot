@@ -1,0 +1,85 @@
+
+digraph G {
+    edge [penwidth=2];
+    node [ shape=box, fontsize=20, penwidth=2, fontname="roboto"];
+    esep=0.5;
+    layout=neato;
+    overlap=scale;
+    splines=true;
+
+l_decode_s1 [label="decode_s1"; pos="0,-0!"; shape=none];
+
+l_execute_s1 [label="execute_s1"; pos="0,-1!"; shape=none];
+
+l_execute_s2 [label="execute_s2"; pos="0,-2!"; shape=none];
+
+l_execute_s3 [label="execute_s3"; pos="0,-3!"; shape=none];
+
+l_div_s1 [label="div_s1"; pos="0,-4!"; shape=none];
+
+l_div_s2 [label="div_s2"; pos="0,-5!"; shape=none];
+
+l_div_s3 [label="div_s3"; pos="0,-6!"; shape=none];
+
+l_div_s5 [label="div_s5"; pos="0,-7!"; shape=none];
+
+l_div_s6 [label="div_s6"; pos="0,-8!"; shape=none];
+
+l_div_s7 [label="div_s7"; pos="0,-9!"; shape=none];
+
+l_memory_s1 [label="memory_s1"; pos="0,-10!"; shape=none];
+
+l_memory_s2 [label="memory_s2"; pos="0,-11!"; shape=none];
+
+l_memory_s4 [label="memory_s4"; pos="0,-12!"; shape=none];
+
+l_memory_s5 [label="memory_s5"; pos="0,-13!"; shape=none];
+
+l_memory_s6 [label="memory_s6"; pos="0,-14!"; shape=none];
+
+l_writeback_s10 [label="writeback_s10"; pos="0,-15!"; shape=none];
+
+l_writeback_s12 [label="writeback_s12"; pos="0,-16!"; shape=none];
+
+l_writeback_s14 [label="writeback_s14"; pos="0,-17!"; shape=none];
+
+l_writeback_s16 [label="writeback_s16"; pos="0,-18!"; shape=none];
+
+l_writeback_s17 [label="writeback_s17"; pos="0,-19!"; shape=none];
+
+l_writeback_s19 [label="writeback_s19"; pos="0,-20!"; shape=none];
+
+l_writeback_s2 [label="writeback_s2"; pos="0,-21!"; shape=none];
+
+l_writeback_s20 [label="writeback_s20"; pos="0,-22!"; shape=none];
+
+l_writeback_s21 [label="writeback_s21"; pos="0,-23!"; shape=none];
+
+l_writeback_s24 [label="writeback_s24"; pos="0,-24!"; shape=none];
+
+l_writeback_s28 [label="writeback_s28"; pos="0,-25!"; shape=none];
+
+l_writeback_s4 [label="writeback_s4"; pos="0,-26!"; shape=none];
+
+l_writeback_s6 [label="writeback_s6"; pos="0,-27!"; shape=none];
+
+l_writeback_s8 [label="writeback_s8"; pos="0,-28!"; shape=none];
+
+n_decode_s1 [label=""; pos="2,-0!"; shape=circle ]; 
+
+
+n_execute_s2 [label=""; pos="2,-2!"; shape=circle ]; 
+
+
+n_memory_s6 [label=""; pos="2,-14!"; shape=circle ]; 
+
+
+n_writeback_s17 [label=""; pos="2,-19!"; shape=circle ]; 
+
+
+n_decode_s1 -> n_execute_s2 [color="black"];
+
+n_execute_s2 -> n_memory_s6 [color="black"];
+
+n_memory_s6 -> n_writeback_s17 [color="black"];
+}
