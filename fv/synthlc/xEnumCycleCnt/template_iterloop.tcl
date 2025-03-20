@@ -7,7 +7,7 @@ while 1 {
   if { $cnt > $max } {
     break
   } 
-  set CMD "cover -name CS_$itm\_$cnt {@(posedge clk_i) !$itm ##1 $itm \[*$cnt\] ##1 !$itm }"
+  set CMD "cover -name CS_$itm\_$cnt {@(posedge clock) !$itm ##1 $itm \[*$cnt\] ##1 !$itm }"
   puts $CMD
   try { 
     eval $CMD

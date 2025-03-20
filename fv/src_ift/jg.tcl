@@ -17,7 +17,7 @@ analyze -sv09 -f jg_hdl.f
 elaborate -bbox_m {\frontend} -top ariane
 
 # Clock specification
-clock clk_i
+clock clock
 
 reset !rst_ni
 set_engine_mode {K C Tri I N AD AM Hp B}

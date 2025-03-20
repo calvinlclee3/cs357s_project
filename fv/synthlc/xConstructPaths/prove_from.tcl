@@ -1,6 +1,6 @@
 set_engine_mode {K C Tri I N AD AM G3 Hp B}
 set_prove_time_limit 15m 
-cover -name set_r {@(posedge clk_i) set_r}
+cover -name set_r {@(posedge clock) set_r}
 prove -property {mytask::set_r}
 set RET [get_property_info -list status mytask::set_r]
 if { $RET == "covered" } { 
