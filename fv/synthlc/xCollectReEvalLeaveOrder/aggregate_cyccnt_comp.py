@@ -539,7 +539,7 @@ def gen():
                                 f.write(A_enter_hb_enter.format(e0=p[1], e1=p[0]))
                             if t_ == '=':
                                 f.write(A_enter_concur_enter.format(e0=p[0], e1=p[1]))
-                        f.write("C_SETR: cover property (@(posedge clk_i) set_r);\n")
+                        f.write("C_SETR: cover property (@(posedge clock) set_r);\n")
             else:
                 os.system("cp ./prove_from.tcl out_complete_2/com_%d_%d.tcl" % (set_idx, combidx))
                 with open("out_complete_2/com_%d_%d.sv" % (set_idx, combidx), "w") as f:

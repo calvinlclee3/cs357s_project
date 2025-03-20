@@ -14,6 +14,10 @@ ex_reg_pc
 ex_pc_valid
 ex_ctrl_div
 
+div
+div.pc_reg
+div.state
+
 memory
 mem_reg_pc
 mem_pc_valid
@@ -25,4 +29,5 @@ wb_reg_pc
 wb_reg_valid
 wb_reg_replay
 wb_ctrl_wxd
+ll_wen
 (wb_valid == 1'b1)

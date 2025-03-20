@@ -57,9 +57,11 @@ module MulDiv(	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scal
   input         io_resp_ready,	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:45:14]
   output        io_resp_valid,	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:45:14]
   output [63:0] io_resp_bits_data,	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:45:14]
-  output [4:0]  io_resp_bits_tag	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:45:14]
+  output [4:0]  io_resp_bits_tag,	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:45:14]
+  input  [39:0] pc_i,
+  output [39:0] pc_o   
 );
-
+  reg  [39:0]  pc_reg;
   reg  [2:0]   state;	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:51:22]
   reg          req_dw;	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:53:16]
   reg  [4:0]   req_tag;	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:53:16]
@@ -168,5 +170,17 @@ module MulDiv(	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scal
   assign io_resp_valid = io_resp_valid_0;	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:40:7, :182:42]
   assign io_resp_bits_data = {req_dw ? result[63:32] : {32{loOut[31]}}, loOut};	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:40:7, :53:16, :89:19, :176:{18,65}, :177:{18,39,50}, :180:27]
   assign io_resp_bits_tag = req_tag;	// @[generators/rocket-chip/src/main/scala/rocket/Multiplier.scala:40:7, :53:16]
+  always @(posedge clock) begin
+    if (reset) begin
+      pc_reg <= '0;
+    end else begin
+      if (io_req_ready_0) begin
+        pc_reg <= pc_i;
+      end else if (io_resp_valid_0) begin
+        pc_reg <= '0;
+      end
+    end
+  end
+  assign pc_o = io_resp_valid_0? pc_reg : '0;
 endmodule
 

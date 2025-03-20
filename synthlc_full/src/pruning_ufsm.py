@@ -63,7 +63,7 @@ for instn in todo_instns:
         outf.write(iii)
 
         for idx, itm in enumerate(ufsm_arr):
-            outf.write("C_%d: cover property (@(posedge clk_i) %s);\n" % (idx, itm))
+            outf.write("C_%d: cover property (@(posedge clock) %s);\n" % (idx, itm))
         outf.close()
 cmd = "python3 host_batch_run_template_v2.py {tdir} {tdir}/out".format(tdir=tar_dir)
 print(cmd)

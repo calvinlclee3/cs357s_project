@@ -581,7 +581,7 @@ def gen():
                                 f.write(A_enter_concur_final.format(e0nm=k[0], e1nm=k[1], e0=k[0], e1=k[1][:-8]))
                             else:
                                 assert(0)
-                    f.write("C_SETR: cover property (@(posedge clk_i) set_r);\n")
+                    f.write("C_SETR: cover property (@(posedge clock) set_r);\n")
             print("set idx ", set_idx, "combidx", combidx, " noncyc", noncyc)
     #print("cnt todo:", cnt_todo_cover)
     print("cnt_todo_cover_final", cnt_todo_cover_final)

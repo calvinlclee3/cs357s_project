@@ -1345,7 +1345,8 @@ module Rocket(	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scal
         mem_ctrl_fence_i <= _GEN_21 | ex_ctrl_fence_i;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:248:20, :249:21, :649:14, :678:{24,48}, :680:24]
       end
       mem_ctrl_vec <= _GEN_20 & mem_ctrl_vec;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :646:46, :648:28]
-      if (mem_pc_valid) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:622:{36,54}]
+      //Annotation: Rocket will invalid the pc for long latency instruction. Hard coding it to allow div to run
+      if (mem_pc_valid | (wb_ctrl_div | mem_ctrl_div | ex_ctrl_div)) begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:622:{36,54}]
         wb_ctrl_rocc <= mem_ctrl_rocc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
         wb_ctrl_rxs2 <= mem_ctrl_rxs2;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
         wb_ctrl_rxs1 <= mem_ctrl_rxs1;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
@@ -1360,7 +1361,12 @@ module Rocket(	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scal
         wb_ctrl_vec <= mem_ctrl_vec;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:249:21, :250:20]
         wb_reg_cause <= _GEN_22 ? mem_reg_cause : {60'h0, _GEN_23 ? 4'h0 : mem_debug_breakpoint ? 4'hE : 4'h3};	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:276:36, :297:35, :686:64, :692:29, :693:20, src/main/scala/chisel3/util/Mux.scala:50:70]
         wb_reg_sfence <= mem_reg_sfence;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:281:27, :299:26]
-        wb_reg_pc <= mem_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:282:23, :300:22]
+        if(!(wb_ctrl_div | mem_ctrl_div | ex_ctrl_div))begin //Annotation
+          wb_reg_pc <= mem_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22, :282:23]
+        end else begin
+          wb_reg_pc <= pc_o;
+        end 
+        //wb_reg_pc <= mem_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:282:23, :300:22]
         wb_reg_mem_size <= mem_reg_mem_size;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:284:29, :301:28]
         wb_reg_hls_or_dv <= mem_reg_hls_or_dv;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:285:30, :302:29]
         wb_reg_inst <= mem_reg_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:283:25, :305:24]
@@ -1411,7 +1417,11 @@ module Rocket(	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scal
         mem_reg_pc <= '0;
       end
       else begin	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:287:26, :646:46, :648:28]
-        mem_reg_pc <= ex_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22, :282:23]
+        if(!(wb_ctrl_div | mem_ctrl_div | ex_ctrl_div))begin //Annotation
+          mem_reg_pc <= ex_reg_pc;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:261:22, :282:23]
+        end else begin
+          mem_reg_pc <= '0;
+        end 
         mem_reg_inst <= ex_reg_inst;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:264:24, :283:25]
         mem_reg_mem_size <= ex_reg_mem_size;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:262:28, :284:29]
         mem_reg_hls_or_dv <= _csr_io_status_dv;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:285:30, :347:19]
@@ -1426,7 +1436,7 @@ module Rocket(	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scal
       end
       else	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:289:25, :646:46, :648:28]
         mem_br_taken <= _alu_io_cmp_out;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:289:25, :512:19]
-      wb_reg_valid <= ~ctrl_killm;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:293:35, :710:{33,45}, :713:19]
+      wb_reg_valid <= ll_wen | ~ctrl_killm; //annotation wb is also valid when the long latency instruction comes back	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:293:35, :710:{33,45}, :713:19]
       wb_reg_xcpt <= mem_xcpt & ~take_pc_wb;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:294:35, :714:34, :715:27, :771:{27,38,53}, :1309:35]
       wb_reg_replay <= (dcache_kill_mem | mem_reg_replay | fpu_kill_mem) & ~take_pc_wb;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:274:36, :295:35, :703:55, :704:{36,51}, :707:{37,55}, :714:{31,34}, :771:{27,38,53}]
       wb_reg_flush_pipe <= ~ctrl_killm & mem_reg_flush_pipe;	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:275:36, :296:35, :710:{33,45}, :713:19, :716:36]
@@ -1659,6 +1669,10 @@ module Rocket(	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scal
     .io_adder_out (_alu_io_adder_out),
     .io_cmp_out   (_alu_io_cmp_out)
   );	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:512:19]
+  reg [39:0] pc_o; //Annotation
+  reg [39:0] pc_i;
+  assign pc_i = (wb_ctrl_div | mem_ctrl_div | ex_ctrl_div) ? _ibuf_io_pc : '0;
+
   MulDiv div (	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:519:19]
     .clock             (clock),
     .reset             (reset),
@@ -1673,7 +1687,9 @@ module Rocket(	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scal
     .io_resp_ready     (_ll_arb_io_in_0_ready),	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:785:22]
     .io_resp_valid     (_div_io_resp_valid),
     .io_resp_bits_data (_div_io_resp_bits_data),
-    .io_resp_bits_tag  (_div_io_resp_bits_tag)
+    .io_resp_bits_tag  (_div_io_resp_bits_tag),
+    .pc_i              (ex_reg_pc), //Annotation
+    .pc_o              (pc_o)  //Annotation
   );	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:519:19]
   Arbiter3_LLWB ll_arb (	// @[generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:785:22]
     .io_in_0_ready     (_ll_arb_io_in_0_ready),

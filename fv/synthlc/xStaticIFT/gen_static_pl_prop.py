@@ -20,7 +20,7 @@ template = '''
 `define T_FROM_I
 `define BORTHRS
 `define STATIC
-UFSM_%d: cover property (@(posedge clk_i) instn_begin ##[0:$] %s);
+UFSM_%d: cover property (@(posedge clock) instn_begin ##[0:$] %s);
 '''
 def gen():
     if not os.path.isdir("out"):
